@@ -1,0 +1,4183 @@
+/* ============================================================
+   MAIN.CSS - Merged & Organized
+   Contains: Fonts, Variables, Layout, Header, Forms, Buttons,
+   Articles, PDF Styles, Language Selector, and Utilities
+   ============================================================ */
+
+/* ============================================================
+   1. FONTS
+   ============================================================ */
+@font-face {
+    font-family: 'raleway_bold';
+    src: url('../font/raleway-bold-webfont.woff2') format('woff2'),
+         url('../font/raleway-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'raleway_light';
+    src: url('../font/raleway-light-webfont.woff2') format('woff2'),
+         url('../font/raleway-light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'raleway_regular';
+    src: url('../font/raleway-regular-webfont.woff2') format('woff2'),
+         url('../font/raleway-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'roboto_regular';
+    src: url('../font/Roboto-Regular.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'roboto_bold';
+    src: url('../font/Roboto-ExtraBold.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+}
+
+/* ============================================================
+   2. GLOBAL VARIABLES
+   ============================================================ */
+:root {
+    --background: #162042;     /* darkblue */
+    --button: #058C2E;         /* green */
+    --text: #916B01;           /* gold */
+    --white: #ffffff;          /* white */
+    --black: #000000;          /* black */
+    --disabled: #555555;       /* gray */
+    --listhighlight: #222222;  /* darkgray */
+    --error: #ff0000;          /* red */
+    --selectbutton: #34395E;   /* bluegray */
+    --headerback: #090A1D;     /* DarkerBlue */
+}
+
+/* ============================================================
+   3. RESET & BASE STYLES
+   ============================================================ */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html, body {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    text-align: center;
+    background-color: var(--background);
+    margin: 0;
+    height: 100%;
+    font-family: raleway_regular, sans-serif;
+    font-size: clamp(16px, 5.21vw, 30px);
+    color: var(--text);
+    overflow-x: hidden;
+}
+
+body:after {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    z-index: -1;
+}
+
+a {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/* ============================================================
+   4. SELECTABLE TEXT & INTERACTIVE ELEMENTS
+   ============================================================ */
+.selectable-text {
+    -webkit-user-select: text !important;
+    -moz-user-select: text !important;
+    -ms-user-select: text !important;
+    user-select: text !important;
+    pointer-events: auto !important;
+    cursor: text !important;
+}
+
+textarea::-webkit-scrollbar {
+    pointer-events: auto !important;
+}
+
+#b64img[src=""],
+#b64img:not([src]) {
+    display: none !important;
+}
+#b64img {
+    display: block;
+}
+
+body.submitting {
+    cursor: wait !important;
+}
+body.submitting a,
+body.submitting button,
+body.submitting .list-row {
+    cursor: wait !important;
+}
+
+a[href^="tel"] {
+    color: inherit !important;
+    text-decoration: none !important;
+    pointer-events: none !important;
+}
+
+/* ============================================================
+   5. CONTAINERS & LAYOUT
+   ============================================================ */
+#centerContainer {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#centerContainer form {
+    width: 100%;
+    max-width: clamp(0px, 100vw, 576px);
+}
+
+.centerContainer2 {
+    width: clamp(288px, 100vw, 576px);
+    text-align: left;
+    margin: 0 auto;
+    background-color: var(--background);
+    color: var(--text);
+}
+
+.centered-button-wrap {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.field-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: clamp(300px, 95.49vw, 550px);
+    text-align: left;
+    margin: 0 auto;
+}
+
+/* ============================================================
+   6. SPACERS
+   ============================================================ */
+.small_line {
+    height: clamp(2px, 0.52vw, 3px);
+}
+.medium_line {
+    height: clamp(6px, 2.08vw, 12px);
+}
+.full_line {
+    height: clamp(12px, 4.17vw, 24px);
+}
+.large_line {
+    height: clamp(25px, 8.68vw, 50px);
+}
+
+/* ============================================================
+   7. HEADER STYLES (New & Old Combined)
+   ============================================================ */
+
+/* --- Header Wrappers --- */
+.full-width-header-wrapper {
+    width: 100%;
+    background-color: var(--headerback);
+    display: flex;
+    justify-content: center;
+}
+
+.full-width-header-wrapper2 {
+    width: 100%;
+    background-color: var(--headerback);
+    border-bottom: 1px solid rgba(145, 107, 1, 0.2);
+}
+
+.header-content {
+    width: 100%;
+    max-width: clamp(0px, 100vw, 576px);
+    margin: 0 auto;
+}
+
+/* --- Header Main (New Style) --- */
+.header-main {
+    width: clamp(0px, 100vw, 576px) !important;
+    height: clamp(40px, 13.89vw, 80px);
+    background-color: var(--headerback);
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: visible !important;
+}
+
+.header-main2 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: clamp(5px, 1.74vw, 10px) clamp(5px, 1.74vw, 15px);
+}
+
+/* --- Header Columns --- */
+.menu-column1 {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-left: clamp(4px, 1.5vw, 10px);
+    width: auto;
+    height: auto;
+}
+.menu-column2 {
+    width: clamp(0px, 73.96vw, 426px);
+    height: clamp(35px, 12.15vw, 70px);
+    text-align: center;
+}
+.menu-column3 {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: clamp(4px, 1.5vw, 10px);
+    margin-left: auto;
+    width: auto;
+    height: auto;
+}
+
+/* --- Header Navigation Icons --- */
+.nav-item img,
+.rotating-world {
+    width: clamp(40px, 13.89vw, 70px);
+    height: clamp(40px, 13.89vw, 70px);
+    display: block;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+.nav-item img:hover,
+.rotating-world:hover {
+    transform: scale(1.06);
+}
+
+.header-main a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-main-index {
+    width: clamp(40px, 13.89vw, 80px) !important;
+    height: 100%;
+    padding-top: clamp(2px, 0.87vw, 5px);
+    padding-left: clamp(8px, 2.6vw, 15px);
+    display: flex;
+    align-items: flex-start;
+}
+
+.header-main-index-logo {
+    width: clamp(35px, 12.15vw, 70px) !important;
+    height: clamp(35px, 12.15vw, 70px) !important;
+    background-image: url(../img/1CoinH_140x140.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: var(--headerback);
+    transition: filter 0.3s ease;
+    margin-left: clamp(4px, 1.5vw, 8px);
+}
+.header-main-index-logo:hover {
+    cursor: pointer;
+    filter: brightness(1.5);
+}
+
+/* --- Header Interaction Reset --- */
+.full-width-header-wrapper,
+.header-main,
+.header-main * {
+    caret-color: transparent !important;
+    caret-shape: none !important;
+    outline: none !important;
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.header-main a {
+    cursor: pointer !important;
+    display: inline-block;
+    pointer-events: auto !important;
+    -webkit-user-modify: read-only !important;
+    overflow: hidden !important;
+    -webkit-user-drag: none;
+}
+
+.header-main *:focus {
+    outline: none !important;
+    caret-color: transparent !important;
+    box-shadow: none !important;
+}
+:focus {
+    caret-color: transparent !important;
+}
+
+/* Restore caret for inputs */
+#searchlan:focus,
+.form__input:focus,
+#capture-section input:focus,
+#capture-section textarea:focus {
+    caret-color: var(--text) !important;
+    user-select: text !important;
+    -webkit-user-select: text !important;
+}
+
+/* --- Amount & Display --- */
+.amount-container {
+    display: inline-block;
+    text-decoration: none;
+    background-color: var(--headerback);
+    padding: clamp(5px, 1.74vw, 10px);
+}
+.amount-container2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-decoration: none;
+    height: 100%;
+    line-height: 1.1;
+    transition: filter 0.3s ease;
+}
+.amount-container2:hover {
+    cursor: pointer;
+    filter: brightness(1.5);
+}
+
+.amount {
+    border: none;
+    outline: none;
+    font-family: roboto_bold, sans-serif;
+    font-weight: 600;
+    font-size: clamp(20px, 6.94vw, 40px);
+    color: var(--button);
+}
+
+.display-num,
+.display-num2 {
+    font-family: roboto_bold, sans-serif;
+    font-weight: 400;
+    font-size: clamp(12px, 3.82vw, 22px);
+    text-align: center;
+}
+.display-num {
+    color: var(--button);
+}
+.display-num2 {
+    color: var(--text);
+}
+
+/* --- Balance Float Animation --- */
+#balance-float {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: roboto_bold, sans-serif;
+    font-size: 22px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 999;
+}
+
+@keyframes explode-white {
+    0% {
+        transform: scale(1);
+        filter: brightness(1);
+    }
+    40% {
+        transform: scale(1.3);
+        filter: brightness(10);
+        color: #ffffff;
+        text-shadow: 0 0 10px #fff;
+    }
+    100% {
+        transform: scale(1);
+        filter: brightness(1);
+    }
+}
+.animate-explode {
+    animation: explode-white 0.8s ease-in-out;
+    display: inline-block;
+}
+
+#balance-float {
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    pointer-events: none;
+}
+
+/* --- Language Flag Icon --- */
+.header-lang .lang-icon {
+    display: inline-block !important;
+    width: 50px;
+    height: 50px;
+    overflow: visible !important;
+    position: relative;
+    transform: translate3d(0, 0, 0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.flag-crop-container {
+    width: 50px;
+    height: 50px;
+    border-radius: 50% !important;
+    overflow: hidden !important;
+    display: block;
+    clip-path: circle(50%);
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    transform: translate3d(0, 0, 0);
+    will-change: transform;
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), filter 0.3s ease;
+}
+
+.header-lang .lang-icon:hover .flag-crop-container,
+.header-flag-icon:hover .flag-crop-container {
+    transform: scale(1.1) translate3d(0, 0, 0);
+    filter: brightness(1.3) !important;
+}
+
+.flag-crop-container .flag-img-round {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
+    display: block;
+    border-radius: 50%;
+}
+
+.flag-crop-container.page-list-flag {
+    width: 40px !important;
+    height: 40px !important;
+    max-width: 40px !important;
+    max-height: 40px !important;
+    border-radius: 50% !important;
+    overflow: hidden !important;
+    display: inline-block !important;
+    flex-shrink: 0 !important;
+}
+
+.header-flag-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: clamp(35px, 12.15vw, 70px);
+    height: clamp(35px, 12.15vw, 70px);
+    text-decoration: none;
+    transition: filter 0.2s ease;
+}
+.header-flag-icon:hover {
+    filter: brightness(1.5) !important;
+}
+
+/* ============================================================
+   8. HEADER TITLE ROW
+   ============================================================ */
+.top-title-container {
+    max-width: 576px;
+    width: clamp(288px, 100vw, 576px);
+    margin: 0 auto !important;
+    display: block;
+    box-sizing: border-box;
+}
+.top-title {
+    font-family: 'raleway_regular', sans-serif;
+    font-size: clamp(11px, 3.82vw, 22px);
+    color: var(--disabled);
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: right;
+    padding-right: clamp(5px, 1.74vw, 10px);
+    padding-left: 0;
+}
+
+.rtl-mode .top-title {
+    text-align: left !important;
+    padding-left: clamp(5px, 1.74vw, 10px) !important;
+    padding-right: 0 !important;
+}
+
+.index-title-row {
+    background-color: var(--background);
+    font-family: raleway_bold, sans-serif;
+    font-size: clamp(18px, 5.21vw, 30px);
+    color: var(--text);
+    width: clamp(300px, 100vw, 576px);
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.index-title-column {
+    display: flex;
+    flex: 1;
+}
+.index-title-column1 {
+    justify-content: flex-start;
+}
+.index-title-column2 {
+    justify-content: flex-end;
+}
+.index-title-row button {
+    width: auto;
+    white-space: nowrap;
+}
+
+/* ============================================================
+   9. BUTTONS
+   ============================================================ */
+.login-button,
+.login-button-small,
+.action-button,
+.error-button {
+    cursor: pointer;
+    background: none;
+    border: none;
+    transition: filter 0.3s ease, transform 0.1s ease, color 0.3s ease, text-shadow 0.3s ease;
+    display: inline-block;
+    outline: none;
+}
+
+.login-button,
+.action-button,
+.error-button {
+    font-family: raleway_bold, sans-serif;
+    font-size: clamp(18px, 5.21vw, 30px);
+}
+.login-button-small {
+    font-family: raleway_regular, sans-serif;
+    font-size: clamp(16px, 4.51vw, 26px);
+}
+
+.login-button,
+.login-button-small,
+.action-button {
+    color: var(--button);
+}
+.error-button {
+    color: var(--error);
+}
+
+.login-button:hover,
+.login-button-small:hover,
+.action-button:hover {
+    filter: brightness(1.5);
+}
+.login-button:active,
+.error-button:active {
+    transform: scale(0.98);
+}
+
+.error-button:hover {
+    color: #ff5555 !important;
+    cursor: pointer;
+    font-weight: normal;
+    text-shadow: 0 0 6px rgba(255, 85, 85, 0.3);
+    filter: none !important;
+}
+
+.login-button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    filter: grayscale(1);
+    pointer-events: none;
+}
+
+.disabled-button {
+    color: var(--disabled);
+    cursor: default;
+}
+
+/* --- Photo Button --- */
+.photo-button {
+    border: none;
+    outline: none;
+    border-radius: clamp(15px, 5.21vw, 30px);
+    background-color: var(--button);
+    font-family: raleway_bold, sans-serif;
+    font-size: clamp(14px, 3.82vw, 22px);
+    color: var(--black);
+    width: clamp(280px, 94.79vw, 546px);
+    height: clamp(40px, 10.42vw, 60px);
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    transition: filter 0.3s ease;
+}
+.photo-button:hover:enabled {
+    filter: brightness(1.5) !important;
+}
+
+/* --- Select Button --- */
+.select-button {
+    border: none;
+    outline: none;
+    border-radius: clamp(18px, 6.08vw, 35px);
+    background-color: var(--selectbutton);
+    font-family: raleway_bold, sans-serif;
+    font-size: clamp(14px, 3.82vw, 22px);
+    color: var(--button);
+    width: clamp(250px, 81.6vw, 470px);
+    height: clamp(45px, 12.15vw, 70px);
+    cursor: pointer;
+    gap: clamp(2px, 0.69vw, 4px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    line-height: 1.2;
+    transition: filter 0.3s ease;
+}
+.select-button:hover:enabled {
+    filter: brightness(1.5) !important;
+}
+.select-button span:first-child {
+    font-family: roboto_regular, sans-serif;
+    font-size: clamp(14px, 3.82vw, 22px);
+    font-weight: 400;
+    color: var(--button);
+    text-align: center;
+}
+
+.select-button-static {
+    border-radius: clamp(17px, 6.08vw, 35px);
+    background-color: var(--selectbutton);
+    width: 100%;
+    height: clamp(35px, 12.15vw, 70px);
+    display: grid !important;
+    grid-template-rows: 1fr 1fr;
+    align-items: center;
+    justify-content: center;
+    color: var(--button);
+    text-align: center;
+    padding: clamp(2px, 0.69vw, 4px) 0;
+    box-sizing: border-box;
+    transition: filter 0.3s ease;
+}
+.select-button-static:hover {
+    cursor: pointer;
+    filter: brightness(1.5) !important;
+}
+
+.amount-line {
+    font-family: roboto_bold, sans-serif;
+    font-size: clamp(12px, 3.82vw, 22px);
+    line-height: 1;
+}
+.desc-line {
+    font-family: raleway_bold, sans-serif;
+    font-size: clamp(12px, 3.82vw, 22px);
+    opacity: 1;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+.action-form-dual {
+    display: flex;
+    gap: clamp(4px, 1.39vw, 8px);
+    justify-content: flex-end;
+}
+.action-icon {
+    width: clamp(35px, 12.15vw, 70px);
+    height: clamp(35px, 12.15vw, 70px);
+    display: block;
+    transition: filter 0.3s ease;
+}
+.action-icon:hover {
+    cursor: pointer;
+    filter: brightness(1.5) !important;
+}
+.action-icon-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+}
+
+/* ============================================================
+   10. FORM INPUTS
+   ============================================================ */
+.form__label,
+.form__label2,
+.form__label_amount {
+    font-family: raleway_bold, sans-serif;
+    font-size: clamp(14px, 3.82vw, 22px);
+    margin-left: clamp(15px, 5.21vw, 30px);
+    margin-top: clamp(2px, 0.87vw, 5px);
+    color: var(--text);
+}
+.form__label2 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: clamp(150px, 46.88vw, 270px);
+}
+
+.form__input {
+    font-family: raleway_regular, sans-serif;
+    color: var(--white);
+    font-size: clamp(18px, 5.21vw, 30px);
+    padding-left: clamp(15px, 5.21vw, 30px);
+    border-radius: 2rem;
+    background-color: var(--black);
+    border: none;
+    width: 100%;
+    height: clamp(40px, 10.42vw, 60px);
+}
+.form__input2 {
+    font-family: raleway_regular, sans-serif;
+    color: var(--white);
+    font-size: clamp(18px, 5.21vw, 30px);
+    padding-left: clamp(15px, 5.21vw, 30px);
+    border-radius: 2rem;
+    background-color: var(--black);
+    border: none;
+    width: clamp(140px, 47.22vw, 272px);
+    height: clamp(40px, 10.42vw, 60px);
+}
+
+#searchlan:focus,
+.form__input:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+#searchlan,
+.form__input {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-appearance: none;
+}
+
+/* --- Amount Input --- */
+.amount-outer-container {
+    width: clamp(250px, 60.76vw, 350px);
+    margin: 0 auto;
+    text-align: left;
+}
+.form__label_amount {
+    display: inline-block;
+    color: var(--text);
+}
+.input-container {
+    position: relative;
+    width: 100%;
+}
+.input-container::after {
+    content: "ᕫ";
+    position: absolute;
+    right: clamp(10px, 3.47vw, 20px);
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text);
+    font-size: clamp(18px, 5.21vw, 30px);
+    pointer-events: none;
+}
+.form__input_amount {
+    font-family: roboto_bold, sans-serif;
+    color: var(--white);
+    font-size: clamp(18px, 5.21vw, 30px);
+    text-align: right;
+    padding-left: clamp(10px, 3.47vw, 20px);
+    padding-right: clamp(30px, 9.55vw, 55px);
+    border-radius: 2rem;
+    background-color: var(--black);
+    border: none;
+    width: 100%;
+    height: clamp(35px, 8.68vw, 50px);
+    box-sizing: border-box;
+}
+.amount-error {
+    color: var(--error) !important;
+}
+
+/* --- Text Inputs --- */
+.form__text,
+.form__numbers {
+    font-family: raleway_regular, sans-serif;
+    color: var(--white);
+    font-size: clamp(18px, 5.21vw, 30px);
+    padding-left: clamp(15px, 5.21vw, 30px);
+    border-radius: 2rem;
+    background-color: var(--black);
+    border: none;
+    width: clamp(300px, 95.49vw, 550px);
+    height: clamp(40px, 10.42vw, 60px);
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+}
+.form__numbers {
+    font-family: roboto_regular, sans-serif;
+}
+.form__text2,
+.form__numbers2 {
+    font-family: raleway_regular, sans-serif;
+    color: var(--white);
+    font-size: clamp(18px, 5.21vw, 30px);
+    padding-left: clamp(15px, 5.21vw, 30px);
+    border-radius: 2rem;
+    background-color: var(--black);
+    border: none;
+    width: clamp(140px, 47.22vw, 272px);
+    height: clamp(40px, 10.42vw, 60px);
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+}
+.form__numbers2 {
+    font-family: roboto_regular, sans-serif;
+}
+
+/* --- Date Input --- */
+[type="date"] {
+    font-family: roboto_regular, sans-serif;
+    color: var(--disabled);
+    font-size: clamp(16px, 5.21vw, 30px);
+    padding-left: clamp(10px, 3.47vw, 20px);
+    border-radius: 2rem;
+    background-color: var(--black);
+    border: none;
+    width: clamp(135px, 47.05vw, 271px);
+    height: clamp(35px, 10.42vw, 60px);
+    display: inline-flex;
+    align-items: center;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+[type="date"]:valid {
+    color: var(--white);
+}
+[type="date"]::-webkit-datetime-edit {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    margin: 0;
+    padding: 0 10px 0 0;
+    opacity: 0.3;
+    filter: invert(1);
+    align-self: center;
+}
+input[type="date"]::-webkit-calendar-picker-indicator:hover {
+    opacity: 1;
+}
+
+/* --- Gender, Hair, Height Selectors --- */
+.select-wrap {
+    appearance: none;
+    font-family: raleway_regular, sans-serif;
+    font-size: clamp(16px, 5.21vw, 30px);
+    padding-left: clamp(3px, 1.04vw, 6px);
+    border-radius: clamp(15px, 5.21vw, 30px);
+    width: clamp(135px, 47.05vw, 271px);
+    height: clamp(35px, 10.42vw, 60px);
+    cursor: pointer;
+    background-color: var(--black);
+    position: relative;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
+}
+.gender-selector {
+    background-color: var(--black);
+    height: clamp(35px, 10.42vw, 60px);
+    line-height: clamp(35px, 10.42vw, 60px);
+    width: clamp(110px, 38.19vw, 220px);
+    margin-left: clamp(10px, 3.47vw, 20px);
+    font-family: raleway_regular, sans-serif;
+    font-size: clamp(16px, 5.21vw, 30px);
+    color: var(--white);
+    border: none;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    padding-top: 0;
+    padding-bottom: 0;
+    vertical-align: middle;
+}
+
+.height_input {
+    font-family: roboto_regular, sans-serif;
+    font-size: clamp(16px, 5.21vw, 30px);
+    color: var(--white);
+    padding-left: clamp(15px, 5.21vw, 30px);
+    border-radius: clamp(15px, 5.21vw, 30px);
+    background-color: var(--black);
+    border: none;
+    width: clamp(135px, 47.05vw, 271px);
+    height: clamp(35px, 10.42vw, 60px);
+}
+.height_input::placeholder {
+    color: var(--disabled);
+    opacity: 1;
+}
+
+.select-wrap-hair {
+    appearance: none;
+    -webkit-appearance: none;
+    font-family: raleway_regular, sans-serif;
+    font-size: clamp(16px, 5.21vw, 30px);
+    padding-left: clamp(3px, 1.04vw, 6px);
+    border-radius: clamp(15px, 5.21vw, 30px);
+    width: clamp(135px, 47.05vw, 271px);
+    height: clamp(35px, 10.42vw, 60px);
+    cursor: pointer;
+    background-color: var(--black);
+    position: relative;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+.hair-selector {
+    background-color: var(--black);
+    height: clamp(35px, 10.42vw, 60px);
+    line-height: clamp(35px, 10.42vw, 60px);
+    width: clamp(110px, 38.19vw, 220px);
+    margin-left: clamp(10px, 3.47vw, 20px);
+    padding-left: 5px;
+    font-family: raleway_regular, sans-serif;
+    font-size: clamp(16px, 5.21vw, 30px);
+    color: var(--white);
+    border: none;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+/* --- Textareas --- */
+.special-features,
+.special-features2 {
+    width: clamp(280px, 94.79vw, 546px);
+    height: clamp(100px, 26.56vw, 153px);
+    appearance: none;
+    padding-left: clamp(15px, 5.21vw, 30px);
+    padding-top: clamp(5px, 1.74vw, 10px);
+    background-color: var(--black);
+    color: var(--white);
+    border: none;
+    border-radius: clamp(15px, 5.21vw, 30px);
+    font-family: raleway_regular, sans-serif;
+    font-size: clamp(16px, 5.21vw, 30px);
+    line-height: 1.2;
+    display: block;
+    margin: 0 auto;
+    box-sizing: border-box;
+    white-space: pre-wrap;
+    resize: none;
+}
+.special-features {
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-select: none;
+    cursor: default;
+}
+.special-features2 {
+    pointer-events: auto;
+    user-select: text;
+    -webkit-user-select: text;
+    cursor: text;
+}
+.special-features::-webkit-scrollbar,
+.special-features2::-webkit-scrollbar {
+    width: clamp(4px, 1.39vw, 8px);
+}
+.special-features::-webkit-scrollbar-thumb,
+.special-features2::-webkit-scrollbar-thumb {
+    background: var(--selectbutton);
+    border-radius: clamp(5px, 1.74vw, 10px);
+}
+
+.descriptiontextarea,
+.amounttextarea {
+    width: clamp(280px, 94.79vw, 546px);
+    appearance: none;
+    padding-left: clamp(15px, 5.21vw, 30px);
+    padding-right: clamp(15px, 5.21vw, 30px);
+    padding-top: clamp(5px, 1.74vw, 10px);
+    background-color: var(--black);
+    color: var(--white);
+    border: none;
+    border-radius: clamp(15px, 5.21vw, 30px);
+    line-height: 1.2;
+    display: block;
+    margin: 0 auto;
+    box-sizing: border-box;
+    white-space: pre-wrap;
+    resize: none;
+    outline: none;
+}
+.descriptiontextarea {
+    height: clamp(44px, 15.28vw, 88px);
+    font-family: raleway_regular, sans-serif;
+    font-size: clamp(16px, 5.21vw, 30px);
+}
+.amounttextarea {
+    height: clamp(30px, 10.42vw, 60px);
+    font-family: roboto_regular, sans-serif;
+    font-size: clamp(15px, 5.21vw, 30px);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+/* ============================================================
+   11. BUTTON ROWS
+   ============================================================ */
+.button1-row,
+.button2-row,
+.button3-row,
+.button4-row,
+.button5-row,
+.button6-row,
+.button7-row,
+.button8-row,
+.button9-row,
+.button10-row {
+    background-color: var(--background);
+    font-family: raleway_bold, sans-serif;
+    font-size: clamp(18px, 5.21vw, 30px);
+    color: var(--text);
+    width: clamp(300px, 95.49vw, 550px);
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.button1-row,
+.button2-row,
+.button5-row,
+.button6-row,
+.button7-row,
+.button8-row {
+    justify-content: center;
+}
+.button3-row {
+    justify-content: space-between;
+    max-width: 95%;
+}
+.button4-row {
+    justify-content: space-between;
+}
+.button9-row {
+    justify-content: center;
+    width: clamp(300px, 98.96vw, 570px);
+    max-width: 100%;
+}
+.button10-row {
+    justify-content: space-between;
+}
+
+.button1-column1 {
+    width: clamp(70px, 24.31vw, 140px);
+}
+.button1-column2 {
+    width: clamp(80px, 27.78vw, 160px);
+}
+.button1-column3 {
+    width: clamp(130px, 43.4vw, 250px);
+}
+
+.button2-column1,
+.button2-column2 {
+    width: clamp(140px, 46.88vw, 270px);
+}
+
+.button3-column1 {
+    display: flex;
+    justify-content: flex-start;
+    flex: 1;
+}
+.button3-column2 {
+    display: flex;
+    justify-content: flex-end;
+    flex: 1;
+}
+.button3-row button {
+    margin: 0;
+    white-space: nowrap;
+}
+
+.button4-column1,
+.button4-column3 {
+    width: clamp(80px, 26.91vw, 155px);
+    display: flex;
+}
+.button4-column1 {
+    justify-content: flex-start;
+}
+.button4-column3 {
+    justify-content: flex-end;
+}
+.button4-column2 {
+    width: clamp(120px, 41.67vw, 240px);
+    display: flex;
+    justify-content: center;
+}
+.button4-column2 .title {
+    margin: 0;
+    white-space: nowrap;
+}
+
+.button5-column1,
+.button5-column3 {
+    width: clamp(140px, 47.57vw, 274px);
+}
+.button5-column2 {
+    width: 2px;
+}
+
+.button6-column1 {
+    width: clamp(150px, 52.08vw, 300px);
+}
+.button6-column2 {
+    width: clamp(90px, 30.38vw, 175px);
+}
+.button6-column3 {
+    width: clamp(50px, 17.36vw, 100px);
+}
+
+.button7-column1 {
+    width: auto;
+    padding-left: clamp(8px, 2.6vw, 15px);
+    padding-right: clamp(5px, 1.74vw, 10px);
+    text-align: left !important;
+}
+.button7-column1 p {
+    margin: 0;
+    white-space: nowrap;
+}
+
+.button8-column1 {
+    width: clamp(35px, 12.15vw, 70px);
+}
+.button8-column2 {
+    width: 4px;
+}
+.button8-column3 {
+    width: clamp(250px, 86.81vw, 500px);
+}
+
+.button9-column1 {
+    width: auto;
+    display: flex;
+    justify-content: center;
+}
+.button9-column1 button {
+    width: auto;
+    max-width: clamp(300px, 98.96vw, 570px);
+    white-space: nowrap;
+}
+
+.button10-column1,
+.button10-column3 {
+    width: clamp(80px, 26.04vw, 150px);
+    display: flex;
+}
+.button10-column1 {
+    justify-content: flex-start;
+}
+.button10-column3 {
+    justify-content: flex-end;
+}
+.button10-column2 {
+    width: clamp(130px, 43.4vw, 250px);
+    display: flex;
+    justify-content: center;
+}
+.button10-column2 .title {
+    margin: 0;
+    white-space: nowrap;
+}
+
+/* ============================================================
+   12. TITLES & FEEDBACK
+   ============================================================ */
+.title,
+.title2 {
+    font-family: raleway_bold, sans-serif;
+    font-size: clamp(22px, 6.94vw, 40px);
+    color: var(--text);
+    white-space: nowrap;
+    margin: 0;
+    display: inline-block;
+    text-align: left;
+    transition: filter 0.3s ease;
+}
+.title2:hover {
+    cursor: pointer;
+    filter: brightness(1.5);
+}
+.title-link {
+    text-decoration: none;
+    transition: filter 0.3s ease;
+    cursor: pointer;
+}
+.title-link:hover {
+    filter: brightness(1.5);
+    cursor: pointer;
+}
+
+.feedback,
+.feedback2,
+.error {
+    font-family: raleway_regular, sans-serif;
+    font-size: clamp(18px, 5.21vw, 30px);
+    text-align: center;
+    display: block;
+}
+.feedback,
+.feedback2 {
+    color: var(--text);
+}
+.error {
+    color: var(--error);
+}
+.feedback2 {
+    white-space: nowrap;
+    overflow: visible;
+}
+
+.feedback3 {
+    font-family: roboto_bold, sans-serif;
+    font-size: clamp(18px, 5.21vw, 30px);
+    text-align: center;
+    color: var(--text);
+    white-space: nowrap;
+    overflow: visible;
+    display: block;
+}
+.feedback3:hover {
+    filter: brightness(1.5);
+    cursor: pointer;
+}
+
+.feedback4 {
+    font-family: roboto_regular, sans-serif;
+    font-size: clamp(14px, 3.47vw, 20px);
+    text-align: center;
+    color: var(--text);
+    white-space: nowrap;
+    overflow: visible;
+    display: block;
+}
+
+.feedback5 {
+    font-family: raleway_regular, sans-serif;
+    font-size: clamp(12px, 4.1vw, 24px);
+    text-align: center;
+    color: var(--white);
+    white-space: nowrap;
+    overflow: visible;
+    display: block;
+}
+
+.account {
+    font-family: roboto_bold, sans-serif;
+    font-weight: 400;
+    font-size: clamp(14px, 3.82vw, 22px);
+    text-align: center;
+    color: var(--text);
+}
+
+/* ============================================================
+   13. REQUEST ROWS
+   ============================================================ */
+.request-row,
+.my-request-row {
+    width: clamp(280px, 97.22vw, 560px);
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+}
+.request-column1 {
+    width: clamp(35px, 12.15vw, 70px);
+    flex-shrink: 0;
+}
+.request-column2 {
+    width: clamp(160px, 57.64vw, 332px);
+    margin: 0 clamp(5px, 1.74vw, 10px);
+}
+.request-column3 {
+    width: clamp(74px, 25.69vw, 148px);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-shrink: 0;
+}
+.my-request-column2 {
+    width: clamp(200px, 71.18vw, 410px);
+    margin: 0 clamp(5px, 1.74vw, 10px);
+}
+.my-request-column3 {
+    width: clamp(35px, 12.15vw, 70px);
+    margin-left: clamp(4px, 1.39vw, 8px);
+    flex-shrink: 0;
+}
+
+/* ============================================================
+   14. TRANSACTION LISTBOX
+   ============================================================ */
+.listbox-container {
+    width: 100%;
+    max-height: clamp(150px, 48.61vw, 350px);
+    overflow-y: scroll !important;
+    background-color: var(--black);
+    border-radius: clamp(10px, 2.78vw, 16px);
+    padding: clamp(5px, 1.74vw, 10px);
+    box-sizing: border-box;
+    scrollbar-gutter: stable both-edges;
+    scrollbar-color: var(--button) rgba(255, 255, 255, 0.05);
+    scrollbar-width: auto;
+}
+
+.list-row,
+.list-row-selected {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: clamp(6px, 2vw, 12px) clamp(10px, 3.47vw, 20px);
+    cursor: pointer;
+    font-family: roboto_regular, sans-serif;
+    font-size: clamp(11px, 3.1vw, 18px);
+    border-bottom: 1px solid #222;
+    transition: background-color 0.2s ease, border-radius 0.2s ease, filter 0.3s ease-in-out !important;
+    user-select: none;
+}
+.list-row:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    filter: brightness(1.3) !important;
+}
+.list-row-selected:hover {
+    filter: brightness(1.2) !important;
+}
+.list-row-selected {
+    background-color: var(--listhighlight) !important;
+    color: var(--white) !important;
+    border-radius: clamp(6px, 1.39vw, 10px);
+    border-bottom: none;
+}
+
+.list-date {
+    width: 35%;
+    text-align: left;
+    white-space: nowrap;
+}
+.list-amt {
+    width: 32%;
+    text-align: right;
+    font-family: roboto_bold, sans-serif;
+    font-size: clamp(11px, 3.1vw, 18px);
+    white-space: nowrap;
+}
+.list-bal {
+    width: 33%;
+    text-align: right;
+    font-family: roboto_regular, sans-serif;
+    white-space: nowrap;
+}
+
+.listbox-container::-webkit-scrollbar {
+    width: clamp(6px, 1.5vw, 12px);
+}
+.listbox-container::-webkit-scrollbar-thumb {
+    background-color: var(--button) !important;
+    border-radius: clamp(8px, 2.6vw, 15px);
+    border: clamp(1px, 0.3vw, 3px) solid var(--black);
+    background-clip: padding-box;
+    min-height: clamp(30px, 10vw, 60px);
+}
+
+@media (max-width: 576px) {
+    .listbox-container {
+        -webkit-overflow-scrolling: touch;
+        padding-right: clamp(5px, 2.5vw, 15px);
+    }
+}
+
+/* ============================================================
+   15. YEAR/MONTH SELECT
+   ============================================================ */
+.year-month-select {
+    background-color: transparent;
+    height: clamp(40px, 12.15vw, 70px);
+    border: none;
+    outline: none;
+    padding-left: clamp(15px, 5.21vw, 30px);
+    padding-top: clamp(5px, 1.74vw, 10px);
+    padding-right: clamp(25px, 7.81vw, 45px);
+    padding-bottom: 0;
+    font-family: roboto_bold, sans-serif;
+    font-size: clamp(18px, 4.51vw, 26px);
+    color: var(--button);
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    transition: filter 0.3s ease;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://w3.org' width='12' height='12' fill='%23916B01' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 5px center;
+    margin: 0;
+    vertical-align: middle;
+}
+.year-month-select:hover {
+    filter: brightness(1.5);
+}
+.year-month-select option {
+    background-color: var(--headerback);
+    color: var(--white);
+}
+
+.nav-filter-wrapper {
+    width: 100%;
+    padding: clamp(5px, 1.74vw, 10px);
+    box-sizing: border-box;
+}
+
+.button_t-row {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 0;
+}
+
+.t-col-year,
+.t-col-prev,
+.t-col-month {
+    flex: none;
+    margin-right: clamp(4px, 1.25vw, 8px);
+}
+
+.year-month-pill,
+.time-nav-button {
+    background-color: var(--black) !important;
+    color: var(--button) !important;
+    font-family: 'roboto_bold', sans-serif;
+    font-weight: bold !important;
+    font-size: clamp(14px, 4vw, 23px);
+    height: clamp(35px, 9vw, 55px);
+    border-radius: 50px;
+    padding: 0 clamp(12px, 3vw, 20px);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+}
+
+.year-month-pill:hover {
+    filter: brightness(1.5);
+    cursor: pointer;
+}
+
+select.year-month-pill[name="year"] {
+    width: clamp(75px, 20vw, 110px);
+}
+select.year-month-pill[name="month"] {
+    width: clamp(100px, 28vw, 150px);
+}
+
+.t-col-image {
+    margin-left: auto;
+    flex: none;
+    transform: translateY(clamp(-3px, -0.8vw, -1px));
+}
+.t-col-spacer {
+    margin-left: auto;
+    flex: none;
+    height: clamp(30px, 10.42vw, 60px);
+    width: 1px;
+}
+
+.time-nav-button.nav-disabled {
+    background-color: var(--black) !important;
+    color: var(--disabled) !important;
+    border-radius: 50px;
+    cursor: default;
+    opacity: 0.5;
+    pointer-events: none;
+    border: 1px solid #222;
+}
+
+.time-nav-button:hover:not(.nav-disabled) {
+    filter: brightness(1.5) !important;
+}
+
+/* ============================================================
+   16. IMAGES
+   ============================================================ */
+.book-image {
+    width: clamp(150px, 52.08vw, 300px);
+    height: clamp(212px, 73.61vw, 424px);
+    display: block;
+    margin: clamp(5px, 1.74vw, 10px) auto;
+    object-fit: contain;
+    border-radius: clamp(4px, 1vw, 8px);
+    box-shadow: 0 0 8px 3px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+}
+.book-image:hover {
+    transform: scale(1.02);
+}
+
+.image-wrap {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Weltschmerz-image {
+    width: clamp(225px, 78.13vw, 450px);
+    height: clamp(125px, 43.4vw, 250px);
+    display: block;
+    margin: clamp(15px, 5.21vw, 30px) auto;
+    object-fit: contain;
+    border-radius: clamp(4px, 1vw, 8px);
+    box-shadow: 0 0 8px 3px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+}
+.Weltschmerz-image:hover {
+    transform: scale(1.02);
+}
+
+.coffee-image {
+    width: clamp(125px, 43.4vw, 250px);
+    height: auto;
+    max-width: 90%;
+    display: block;
+    object-fit: contain;
+    border-radius: clamp(4px, 1vw, 8px);
+    box-shadow: 0 0 clamp(4px, 1.39vw, 8px) clamp(1px, 0.52vw, 3px) rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+}
+.coffee-image:hover {
+    transform: scale(1.02);
+}
+
+/* --- Wide Images (LTR/RTL) --- */
+.norm-image {
+    width: 100vw !important;
+    max-width: none !important;
+    height: 62.5vw;
+    max-height: 600px;
+    display: block;
+    object-fit: cover;
+    position: relative;
+    left: 50%;
+    right: auto;
+    margin-left: -50vw;
+    margin-right: 0;
+}
+.rtl-mode .norm-image {
+    right: 50% !important;
+    left: auto !important;
+    margin-right: -50vw !important;
+    margin-left: 0 !important;
+}
+
+.wide-image {
+    width: 100vw !important;
+    max-width: none !important;
+    height: 62.5vw;
+    max-height: 1000px;
+    display: block;
+    object-fit: cover;
+    position: relative;
+    left: 50%;
+    right: auto;
+    margin-left: -50vw;
+    margin-right: 0;
+}
+.rtl-mode .wide-image {
+    right: 50% !important;
+    left: auto !important;
+    margin-right: -50vw !important;
+    margin-left: 0 !important;
+}
+
+.small-image {
+    /* Do nothing */
+}
+
+/* --- User Icons --- */
+.user-icon-link {
+    margin-left: auto;
+    margin-right: clamp(4px, 1.5vw, 10px);
+    display: flex;
+    align-items: center;
+}
+
+.mainusericon {
+    height: clamp(35px, 12.15vw, 70px);
+    width: clamp(35px, 12.15vw, 70px);
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    transition: filter 0.3s ease;
+}
+.mainusericon:hover {
+    cursor: pointer;
+    filter: brightness(1.5);
+}
+
+.humanicon,
+.humanicon2 {
+    height: clamp(70px, 24.31vw, 140px);
+    width: clamp(70px, 24.31vw, 140px);
+    border-radius: clamp(17px, 6.08vw, 35px);
+    object-fit: cover;
+    overflow: hidden;
+    transition: filter 0.3s ease;
+    border: 10px solid transparent;
+    border-radius: 50%;
+    box-sizing: border-box;
+}
+.humanicon2:hover {
+    cursor: pointer;
+    filter: brightness(1.5);
+}
+
+.transactionicon {
+    height: clamp(30px, 10.42vw, 60px);
+    width: clamp(30px, 10.42vw, 60px);
+    aspect-ratio: 1 / 1;
+    flex-shrink: 0;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    transition: filter 0.3s ease;
+}
+.transactionicon:hover {
+    cursor: pointer;
+    filter: brightness(1.5);
+}
+
+.transactionicon2,
+.transactionicon2-placeholder {
+    width: clamp(35px, 10vw, 55px);
+    height: clamp(35px, 10vw, 55px);
+    border-radius: 50%;
+    margin-right: clamp(10px, 2.5vw, 15px);
+    object-fit: cover;
+    flex-shrink: 0;
+    transition: filter 0.3s ease-in-out !important;
+}
+
+.transaction-hover-row:hover .transactionicon2,
+.transaction-hover-row:hover .transactionicon2-placeholder {
+    filter: brightness(1.3) !important;
+}
+
+/* --- Footer Icons --- */
+.footer-icons {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: clamp(20px, 6.94vw, 40px);
+    margin-bottom: clamp(20px, 6.94vw, 40px);
+}
+.footer-icons p.tight {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    gap: clamp(25px, 8.68vw, 50px);
+}
+.footer-icons .WT-image {
+    width: clamp(40px, 12.15vw, 70px);
+    height: clamp(40px, 12.15vw, 70px);
+    display: block;
+    object-fit: contain;
+    transition: filter 0.3s ease, transform 0.3s ease;
+    filter: brightness(1);
+}
+.footer-icons a:hover .WT-image {
+    transform: scale(1.1);
+}
+
+/* --- Social Header --- */
+.social-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: clamp(15px, 5.21vw, 30px);
+    gap: clamp(5px, 1.74vw, 10px);
+}
+.social-header .WT-image {
+    width: clamp(40px, 12.15vw, 70px);
+    height: clamp(40px, 12.15vw, 70px);
+    display: block;
+    object-fit: contain;
+    margin: 0 auto;
+    box-shadow: none;
+}
+.social-header p.downloads {
+    margin: 0;
+    text-align: center;
+    font-family: 'raleway_regular', sans-serif;
+    color: var(--text);
+    font-size: clamp(15px, 5.21vw, 30px);
+}
+
+.social-buttons-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(10px, 3.47vw, 15px);
+    margin-bottom: clamp(8px, 3.47vw, 16px);
+}
+
+/* ============================================================
+   17. DOWNLOAD LINK
+   ============================================================ */
+.download-link {
+    font-family: raleway_regular, sans-serif;
+    font-size: clamp(14px, 3.12vw, 18px);
+    color: var(--disabled);
+    text-decoration: none;
+    transition: filter 0.3s ease, color 0.3s ease;
+}
+.download-link:hover {
+    filter: brightness(1.5);
+    color: var(--white);
+    cursor: pointer;
+}
+
+.dev-link-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: clamp(5px, 1.74vw, 10px);
+}
+.dev-link-icon {
+    width: clamp(12px, 4.162vw, 24px);
+    height: clamp(12px, 4.16vw, 24px);
+    margin-right: clamp(5px, 1.73vw, 10px);
+    display: block;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+/* ============================================================
+   18. LANGUAGE SELECTION LISTBOX
+   ============================================================ */
+.language-listbox {
+    width: 100%;
+    max-height: clamp(300px, 104.16vw, 600px);
+    background-color: var(--headerback);
+    border-radius: clamp(10px, 2.78vw, 16px);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    margin-top: clamp(10px, 3.47vw, 20px);
+    border: clamp(0.5px, 0.17vw, 1px) solid var(--line-color);
+    box-sizing: border-box;
+    overflow-y: auto;
+    scrollbar-gutter: stable;
+    scrollbar-color: var(--button) rgba(255, 255, 255, 0.05);
+    scrollbar-width: thin;
+}
+
+.language-listbox::-webkit-scrollbar {
+    width: clamp(6px, 1.5vw, 10px);
+}
+.language-listbox::-webkit-scrollbar-thumb {
+    background-color: var(--button);
+    border-radius: clamp(8px, 2.6vw, 15px);
+    border: 2px solid var(--headerback);
+    background-clip: padding-box;
+}
+
+.lang-item {
+    display: block;
+    cursor: pointer;
+    border-bottom: clamp(0.5px, 0.17vw, 1px) solid var(--line-color);
+    padding: clamp(6px, 2.08vw, 12px);
+    transition: background 0.2s;
+}
+.lang-item:first-child {
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+}
+.lang-item:last-child {
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+    border-bottom: none;
+}
+
+.lang-item:hover .lang-content {
+    filter: brightness(1.5) !important;
+}
+.lang-item input[type="radio"] {
+    display: none;
+}
+.lang-item input:checked + .lang-content {
+    background: rgba(0, 191, 255, 0.15);
+    font-weight: bold;
+}
+
+.lang-content {
+    display: flex;
+    align-items: center;
+    gap: clamp(7.5px, 2.6vw, 15px);
+    transition: filter 0.2s;
+}
+
+.lang-text {
+    font-family: raleway_regular, sans-serif;
+    color: var(--text);
+    font-size: clamp(12.5px, 4.34vw, 25px);
+    line-height: 1.2;
+    text-align: left;
+}
+
+.profile-lang-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(7.5px, 2.6vw, 15px);
+    background-color: var(--button);
+    border: none;
+    height: clamp(40px, 10.42vw, 60px);
+    border-radius: clamp(15px, 5.21vw, 30px);
+    padding: 0 clamp(12.5px, 4.34vw, 25px);
+    margin-top: clamp(1px, 0.35vw, 2px);
+    width: 100%;
+    box-sizing: border-box;
+    transition: filter 0.2s, transform 0.1s;
+    cursor: pointer;
+}
+.profile-lang-button:hover {
+    filter: brightness(1.2) !important;
+}
+.profile-lang-button:active {
+    transform: scale(0.98);
+}
+.profile-lang-flag .flag-crop-container {
+    width: 40px !important;
+    height: 40px !important;
+    display: block !important;
+}
+.profile-lang-text {
+    font-family: raleway_bold, sans-serif;
+    font-size: clamp(14px, 3.82vw, 22px);
+    color: var(--black);
+}
+
+/* ============================================================
+   19. WHITELIST / MANAGEMENT
+   ============================================================ */
+.button-full-row {
+    background-color: var(--background);
+    font-family: raleway_bold, sans-serif;
+    font-size: clamp(18px, 5.21vw, 30px);
+    color: var(--text);
+    width: clamp(300px, 95.49vw, 550px);
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.switch-container {
+    display: flex;
+    align-items: center;
+    gap: clamp(10px, 3.47vw, 20px);
+    margin-top: clamp(5px, 1.73vw, 10px);
+    margin-left: clamp(10px, 3.47vw, 20px);
+    width: 100%;
+}
+
+.left-label {
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin-bottom: clamp(2.4px, 0.87vw, 5px);
+    margin-left: clamp(10px, 3.47vw, 20px);
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #333;
+    transition: .4s;
+    border-radius: 34px;
+}
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+input:checked + .slider {
+    background-color: var(--button);
+}
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.manage-row {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: clamp(8px, 2.6vw, 15px) clamp(10px, 3.47vw, 20px);
+    border-bottom: 1px solid #222;
+    gap: 15px;
+}
+.manage-row:last-child {
+    border-bottom: none;
+}
+.manage-row input[type="checkbox"] {
+    accent-color: var(--button);
+    transform: scale(1.5);
+    cursor: pointer;
+}
+
+.col-check {
+    width: 40px;
+    display: flex;
+    justify-content: center;
+}
+.col-img {
+    width: 50px;
+}
+.col-name {
+    flex-grow: 1;
+    font-family: raleway_regular, sans-serif;
+    color: var(--text);
+    font-size: clamp(20px, 5.5vw, 27px);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+}
+
+.manage-checkbox {
+    accent-color: var(--button) !important;
+    appearance: checkbox !important;
+    -webkit-appearance: checkbox !important;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    border: 1px solid var(--white);
+}
+
+.management-button-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.manage-btn-col {
+    flex: 0 1 auto;
+    min-width: max-content;
+}
+#toggleSelect {
+    white-space: nowrap;
+    padding: 0 10px;
+}
+
+@media (max-width: 600px) {
+    #toggleSelect {
+        font-size: 14px;
+    }
+}
+
+.error-btn {
+    background-color: var(--error) !important;
+    color: white !important;
+}
+.success-btn {
+    background-color: var(--button) !important;
+    color: var(--black) !important;
+    font-family: roboto_bold;
+}
+
+/* ============================================================
+   20. ARTICLE & PDF STYLES
+   ============================================================ */
+
+/* --- Article Container --- */
+#capture-section {
+    background-color: var(--background);
+    padding: clamp(15px, 5.21vw, 30px);
+    margin: 0 auto;
+    width: clamp(288px, 100vw, 576px);
+    text-align: left;
+    line-height: 1.5;
+    color: var(--white);
+    box-shadow: none;
+    display: none;
+    /* Hidden by default, shown by JS */;
+}
+
+#capture-section2 {
+    background-color: var(--background);
+    padding: clamp(15px, 5.21vw, 30px);
+    margin: 0 auto;
+    width: clamp(288px, 100vw, 576px);
+    text-align: left;
+    line-height: 1.5;
+    color: var(--white);
+}
+
+table,
+th,
+td {
+    border: 0px solid black;
+    border-collapse: collapse;
+}
+
+/* --- Article Titles --- */
+.title1 {
+    font-family: arial;
+    font-size: 40px;
+    font-weight: bold;
+    line-height: 1.4;
+    text-transform: uppercase;  /* Changed from capitalize to uppercase */
+    color: var(--text);
+    display: block;
+    text-align: center;  /* Added centering */
+    width: 100%;  /* Ensures it takes full width for centering */
+}
+
+.title3 {
+    font-family: arial;
+    text-transform: capitalize;
+    font-size: 24px;
+    font-weight: bold;
+    color: #000000;
+    margin: 1.5em 0 0.5em;
+    display: block;
+}
+
+/* --- Article Text --- */
+.par {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 20px;
+    font-weight: normal;
+    color: #000000;
+    margin-bottom: 1em;
+}
+
+.par_bold {
+    font-family: 'raleway_bold', sans-serif;
+    color: var(--white);
+    font-size: clamp(10px, 3.47vw, 20px);
+    margin-top: 0;
+    margin-bottom: 0.2em !important;
+    padding-inline-end: clamp(25px, 8.68vw, 50px);
+    padding-inline-start: 0;
+    text-align: left;
+    display: block;
+    line-height: 1.5;
+}
+
+.par_italic {
+    font-family: 'raleway_regular', sans-serif;
+    color: var(--text);
+    font-size: clamp(10px, 3.47vw, 20px);
+    font-weight: bold;
+    font-style: italic;
+    margin-inline-start: clamp(20px, 6.94vw, 40px);
+    display: block;
+    margin-top: -5px;
+    margin-bottom: 1.2em;
+    padding-inline-end: clamp(25px, 8.68vw, 50px);
+    line-height: 1.5;
+}
+
+.par_bold + .par {
+    margin-top: 0;
+}
+
+.title3 + .par,
+.title3 + .par_bold,
+.title3 + .par_italic {
+    margin-top: -5px;
+}
+
+.title4 + .par,
+.title4 + .par_bold,
+.title4 + .par_italic {
+    margin-top: -5px;
+}
+
+/* --- Article Images --- */
+.article-img {
+    width: 100%;
+    height: auto;
+    max-width: 685px;
+    display: block;
+    margin: 20px auto;
+}
+
+.photo {
+    font-family: "Times New Roman", Times, serif;
+    font-style: italic;
+    font-size: 14px;
+    color: #777777;
+    display: flex;
+    justify-content: center;
+}
+
+.link {
+    font-family: arial;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: underline;
+    color: #444444;
+}
+
+.link2 {
+    font-family: 'raleway_regular', sans-serif;
+    font-size: clamp(9px, 3.13vw, 18px);
+    color: var(--button);
+    transition: filter 0.3s ease;
+}
+.link2:hover {
+    filter: brightness(1.5);
+}
+
+/* --- Blockquotes --- */
+.blockquote {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 25px;
+    background: #ffffff;
+    border: 1px solid var(--text);  /* Changed to gold */
+    color: #000000;
+    box-sizing: border-box;
+}
+.blockquote--bordered {
+    border-left: 10px solid #f27429;
+}
+.blockquote__text {
+    font-family: "Times New Roman", Times, serif;
+    font-style: italic;
+    font-size: 1.15em;
+    line-height: 1.5;
+    margin: 0;
+}
+.blockquote__text:not(:last-child) {
+    margin-bottom: 1em;
+}
+
+.rtl-mode .blockquote {
+    border-left: none;
+    border-right: clamp(5px, 1.73vw, 10px) solid var(--text);
+}
+
+/* --- Article Grid Layouts --- */
+.chapter-container {
+    display: grid;
+    font-family: 'roboto_bold', sans-serif;
+    font-weight: 900;
+    grid-template-columns: clamp(32px, 11.28vw, 65px) 1fr;
+    width: 100%;
+    box-sizing: border-box;
+    color: var(--white);
+    direction: ltr;
+    text-align: left;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.rtl-mode .chapter-container {
+    grid-template-columns: 65px 1fr;
+    direction: rtl;
+    text-align: right;
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.chapter-id {
+    text-align: left;
+}
+.rtl-mode .chapter-id {
+    text-align: right;
+}
+
+.lvl-1 {
+    font-size: clamp(15px, 5.21vw, 30px);
+    margin-bottom: 0.5em;
+}
+.lvl-2 {
+    font-size: clamp(12.5px, 4.34vw, 25px);
+    margin-bottom: 0.5em;
+}
+.lvl-3 {
+    font-size: clamp(10px, 3.82vw, 20px);
+    margin-bottom: 0.5em;
+}
+.lvl-4 {
+    font-size: clamp(10px, 3.82vw, 20px);
+    font-style: italic;
+    margin-bottom: 0.5em;
+}
+
+/* --- Standalone Titles --- */
+h1.standalone-title,
+h2.standalone-title,
+h3.standalone-title,
+h4.standalone-title {
+    display: grid;
+    grid-template-columns: clamp(32px, 11.28vw, 65px) 1fr;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: 'roboto_bold', sans-serif;
+    font-weight: 900;
+    color: var(--white);
+    margin-top: 0px !important;
+    padding-left: 0;
+    padding-right: 0;
+    direction: ltr;
+    text-align: left;
+}
+
+.rtl-mode h1.standalone-title,
+.rtl-mode h2.standalone-title,
+.rtl-mode h3.standalone-title,
+.rtl-mode h4.standalone-title {
+    grid-template-columns: clamp(32px, 11.28vw, 65px) 1fr;
+    direction: rtl;
+    text-align: right;
+}
+
+.standalone-title-txt {
+    grid-column: 2;
+}
+
+h1.standalone-title {
+    font-size: clamp(15px, 5.21vw, 30px);
+    margin-top: 0px !important;
+    margin-bottom: 0.2em;
+}
+h2.standalone-title {
+    font-size: clamp(12.5px, 4.34vw, 25px);
+    margin-top: 0px !important;
+    margin-bottom: 0.2em;
+}
+h3.standalone-title {
+    font-size: clamp(10px, 3.82vw, 20px);
+    margin-top: 0px !important;
+    margin-bottom: 0.2em;
+}
+h4.standalone-title {
+    font-size: clamp(10px, 3.82vw, 20px);
+    font-style: italic;
+    margin-top: 0px !important;
+    margin-bottom: 0.2em;
+}
+
+h1.standalone-center-title,
+h2.standalone-center-title,
+h3.standalone-center-title,
+h4.standalone-center-title,
+h1.standalone-center-link,
+h2.standalone-center-link,
+h3.standalone-center-link,
+h4.standalone-center-link {
+    text-align: center;
+    margin-top: 0px !important;
+    margin-bottom: 0.2em;
+}
+
+h1.standalone-center-title {
+    font-size: clamp(15px, 5.21vw, 30px);
+}
+h2.standalone-center-title {
+    font-size: clamp(12.5px, 4.34vw, 25px);
+}
+h3.standalone-center-title {
+    font-size: clamp(10px, 3.82vw, 20px);
+}
+h4.standalone-center-title {
+    font-size: clamp(10px, 3.82vw, 20px);
+    font-style: italic;
+}
+h1.standalone-center-link {
+    font-size: clamp(15px, 5.21vw, 30px);
+}
+h2.standalone-center-link {
+    font-size: clamp(12.5px, 4.34vw, 25px);
+}
+h3.standalone-center-link {
+    font-size: clamp(10px, 3.82vw, 20px);
+}
+h4.standalone-center-link {
+    font-size: clamp(10px, 3.82vw, 20px);
+    font-style: italic;
+}
+
+h1.standalone-center-link:hover,
+h2.standalone-center-link:hover,
+h3.standalone-center-link:hover,
+h4.standalone-center-link:hover {
+    filter: brightness(1.5);
+}
+
+/* --- Paragraph Grid --- */
+.parag {
+    display: grid;
+    grid-template-columns: clamp(32px, 11.28vw, 65px) 1fr;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: 'raleway_regular', sans-serif;
+    color: var(--white);
+    font-size: clamp(9px, 3.13vw, 18px);
+    line-height: 1.6;
+    margin-top: 0px !important;
+    margin-bottom: 1.2em;
+    direction: ltr;
+    text-align: left;
+}
+
+.parag-text {
+    grid-column: 2;
+    font-weight: 400;
+    display: block;
+}
+
+.rtl-mode .parag {
+    grid-template-columns: clamp(32px, 11.28vw, 65px) 1fr;
+    direction: rtl;
+    margin-top: 0px !important;
+    text-align: right;
+}
+
+/* --- Lists --- */
+.chapter-list {
+    display: grid;
+    grid-template-columns: clamp(32px, 11.28vw, 65px) 1fr;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 1.5em;
+    padding: 0;
+    list-style: none;
+    direction: ltr;
+}
+
+.rtl-mode .chapter-list {
+    grid-template-columns: clamp(32px, 11.28vw, 65px) 1fr;
+    direction: rtl;
+}
+
+.bullet-title-list {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 1.5em;
+    padding: 0;
+    list-style: none;
+    direction: ltr;
+}
+.rtl-mode .bullet-title-list {
+    direction: rtl;
+}
+
+.bullet-title-list li {
+    position: relative;
+    width: auto;
+    box-sizing: border-box;
+    font-family: 'raleway_regular', sans-serif;
+    color: var(--white);
+    font-size: clamp(9px, 3.13vw, 18px);
+    line-height: 1.6;
+    margin-bottom: 0.8em;
+    margin-inline-start: calc(65px + clamp(10px, 3.47vw, 20px));
+    margin-inline-end: 0px !important;
+    display: block;
+    text-align: left;
+}
+
+.rtl-mode .bullet-title-list li {
+    text-align: right;
+}
+
+.bullet-title-list li::before {
+    content: "•";
+    position: absolute;
+    inset-inline-start: calc(-1 * clamp(10px, 3.47vw, 20px));
+    top: -0.05em;
+    color: var(--white);
+    display: inline-block;
+    font-size: 1.6em;
+    line-height: 1;
+}
+
+.bullet-list-content-wrapper {
+    display: inline;
+}
+.bullet-list-title-bold {
+    font-family: 'roboto_bold', sans-serif;
+    font-weight: 900;
+    display: inline;
+}
+.rtl-mode .bullet-list-title-bold {
+    float: right;
+    margin-left: 0.25em;
+}
+.bullet-list-desc-text {
+    font-family: 'raleway_regular', sans-serif;
+    display: inline;
+}
+
+/* --- Numbered Lists --- */
+.numbered-title-list {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 1.5em;
+    padding: 0;
+    list-style: none;
+    direction: ltr;
+    counter-reset: title-list-counter;
+}
+.rtl-mode .numbered-title-list {
+    direction: rtl;
+}
+
+.numbered-title-list li {
+    position: relative;
+    width: auto;
+    box-sizing: border-box;
+    font-family: 'raleway_regular', sans-serif;
+    color: var(--white);
+    font-size: clamp(9px, 3.13vw, 18px);
+    line-height: 1.6;
+    margin-bottom: 0.8em;
+    margin-inline-start: calc(65px + clamp(10px, 3.47vw, 20px));
+    margin-inline-end: 0px !important;
+    display: block;
+    text-align: left;
+}
+.rtl-mode .numbered-title-list li {
+    text-align: right;
+}
+
+.numbered-title-list li::before {
+    counter-increment: title-list-counter;
+    content: counter(title-list-counter) ".";
+    position: absolute;
+    inset-inline-start: calc(-1 * clamp(10px, 3.47vw, 20px));
+    top: 0;
+    font-family: 'roboto_bold', sans-serif;
+    font-weight: 900;
+    color: var(--white);
+    display: inline-block;
+}
+
+.numbered-list-content-wrapper {
+    display: inline;
+}
+.numbered-list-title-bold {
+    font-family: 'roboto_bold', sans-serif;
+    font-weight: 900;
+    display: inline;
+}
+.rtl-mode .numbered-list-title-bold {
+    float: right;
+    margin-left: 0.25em;
+}
+.numbered-list-desc-text {
+    font-family: 'raleway_regular', sans-serif;
+    display: inline;
+}
+
+/* --- Quotes --- */
+.quote {
+    display: grid;
+    grid-template-columns: clamp(45px, 15.63vw, 90px) 1fr;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: 'raleway_regular', sans-serif;
+    color: var(--white);
+    font-size: clamp(9px, 3.13vw, 18px);
+    line-height: 1.6;
+    font-style: italic;
+    margin-top: 0px !important;
+    margin-bottom: 0px;
+    direction: ltr;
+    text-align: left;
+}
+
+.quote-text {
+    grid-column: 2;
+    display: block;
+    font-family: 'raleway_regular', sans-serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(9px, 3.13vw, 18px);
+    line-height: 1.6;
+    color: var(--white);
+}
+
+.quote-author {
+    width: 100%;
+    box-sizing: border-box;
+    font-family: 'raleway_regular', sans-serif;
+    font-weight: bold;
+    font-style: italic;
+    color: var(--white);
+    font-size: clamp(8px, 2.78vw, 16px);
+    text-align: end;
+    margin-top: 0.2em;
+    margin-bottom: 1.5em;
+}
+
+.quote-title {
+    display: grid;
+    grid-template-columns: clamp(45px, 15.63vw, 90px) 1fr;
+    width: 100%;
+    box-sizing: border-box;
+    direction: ltr;
+    text-align: left;
+    margin-top: 0px !important;
+    margin-bottom: 0px;
+}
+
+.quote-title-text {
+    grid-column: 2;
+    display: block;
+    font-family: 'roboto_bold', sans-serif;
+    font-weight: 900;
+    font-style: italic;
+    color: var(--white);
+    font-size: clamp(9px, 3.13vw, 18px);
+    line-height: 1.6;
+}
+
+/* --- Name Table --- */
+.name-table {
+    width: 100%;
+    margin-bottom: 20px;
+}
+.name-table td {
+    padding-left: 10px;
+    text-align: left;
+}
+
+.imgtext {
+    font-family: roboto_regular;
+    font-size: clamp(7px, 2.43vw, 14px);
+    text-transform: uppercase;
+    color: var(--text);
+}
+
+.article-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: clamp(10px, 3.47vw, 20px);
+    gap: 15px;
+}
+
+.author-table {
+    width: auto;
+    border-collapse: collapse;
+}
+.author-table td {
+    padding-left: clamp(10px, 2.6vw, 15px);
+    text-align: left;
+    white-space: nowrap;
+}
+.author-photo {
+    width: clamp(25px, 8.68vw, 50px);
+    height: clamp(25px, 8.68vw, 50px);
+    border-radius: 50%;
+    display: block;
+}
+
+.pdf-button {
+    width: auto !important;
+    padding-left: clamp(10px, 3.47vw, 20px) !important;
+    padding-right: clamp(10px, 3.47vw, 20px) !important;
+    flex-shrink: 0;
+}
+
+/* --- PDF Styles --- */
+.pdf-title1 {
+    font-family: 'roboto_bold', sans-serif;
+    font-size: clamp(33px, 11.46vw, 66px);
+    color: var(--white);
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    text-transform: uppercase;
+    padding-right: clamp(5px, 1.74vw, 10px);
+    padding-left: 0;
+}
+.pdf-title2 {
+    font-family: 'roboto_bold', sans-serif;
+    font-size: clamp(11px, 3.82vw, 22px);
+    color: var(--black);
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    text-transform: uppercase;
+    padding-right: clamp(5px, 1.74vw, 10px);
+    padding-left: 0;
+}
+.pdf-title3 {
+    font-family: 'roboto_regular', sans-serif;
+    font-size: clamp(11px, 3.82vw, 22px);
+    font-style: italic;
+    color: var(--black);
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    padding-right: clamp(5px, 1.74vw, 10px);
+    padding-left: 0;
+}
+.pdf-title4 {
+    font-family: 'raleway_bold', sans-serif;
+    font-size: clamp(11px, 3.82vw, 22px);
+    font-style: italic;
+    color: var(--error);
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    text-transform: uppercase;
+    padding-right: clamp(5px, 1.74vw, 10px);
+    padding-left: 0;
+}
+.pdf-title5 {
+    font-family: 'roboto_bold', sans-serif;
+    font-size: clamp(11px, 3.82vw, 22px);
+    color: var(--button);
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    text-transform: uppercase;
+    padding-right: clamp(5px, 1.74vw, 10px);
+    padding-left: 0;
+}
+.pdf-title5:hover {
+    filter: brightness(1.5);
+}
+.pdf-title6 {
+    font-family: 'roboto_bold', sans-serif;
+    font-size: clamp(11px, 3.82vw, 22px);
+    color: var(--white);
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    text-transform: uppercase;
+    padding-right: clamp(5px, 1.74vw, 10px);
+    padding-left: 0;
+}
+.chapter1-number {
+    font-family: 'raleway_regular', sans-serif;
+    font-size: clamp(11px, 3.82vw, 22px);
+    color: var(--white);
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: right;
+    padding-right: clamp(5px, 1.74vw, 10px);
+    padding-left: 0;
+}
+
+/* --- Misc Article Elements --- */
+.reli {
+    padding-top: clamp(10px, 2.04vw, 20px);
+}
+
+.number-box {
+    width: clamp(12.5px, 4.34vw, 25px);
+    border: 0px solid;
+    padding-left: clamp(5px, 1.74vw, 10px);
+    font-family: raleway_light, sans-serif;
+    font-size: clamp(50px, 17.36vw, 100px);
+    color: var(--text);
+}
+
+.paragraph {
+    font-family: raleway_light, sans-serif;
+    font-size: clamp(12.5px, 4.34vw, 25px);
+    color: var(--white);
+    padding-left: clamp(40px, 13.89vw, 80px);
+    padding-right: clamp(10px, 3.47vw, 20px);
+}
+
+.list-title {
+    font-family: 'raleway_bold', sans-serif;
+    font-size: clamp(10px, 3.47vw, 20px);
+    color: var(--text-color);
+    margin-top: clamp(10px, 3.47vw, 20px);
+    padding-inline-start: clamp(10px, 3.47vw, 20px);
+    padding-inline-end: clamp(25px, 8.68vw, 50px);
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: left;
+    text-transform: capitalize;
+}
+.rtl-mode .list-title {
+    text-align: right !important;
+    text-transform: none !important;
+}
+
+.unordered-list {
+    font-family: 'raleway_regular', sans-serif;
+    font-style: italic;
+    font-size: clamp(10px, 3.47vw, 20px);
+    color: var(--white);
+    list-style-position: outside;
+    list-style-type: disc;
+    box-sizing: border-box;
+    width: 100%;
+    display: block;
+    padding-right: clamp(25px, 8.68vw, 50px);
+    padding-left: clamp(20px, 6.94vw, 40px);
+}
+.rtl-mode .unordered-list {
+    padding-right: clamp(20px, 6.94vw, 40px) !important;
+    padding-left: clamp(25px, 8.68vw, 50px) !important;
+    text-align: right;
+}
+.list-item {
+    font-size: inherit;
+    padding-bottom: clamp(5px, 1.74vw, 10px);
+}
+
+.mail-button {
+    border: none;
+    outline: none;
+    border-radius: clamp(40px, 13.89vw, 80px);
+    background-color: var(--accent-color);
+    font-family: ralewayextrabold, sans-serif;
+    color: var(--text-color);
+    width: clamp(200px, 69.4vw, 400px);
+    height: clamp(50px, 17.36vw, 100px);
+    font-size: clamp(12.5px, 4.34vw, 25px);
+    align-items: center;
+    margin-left: clamp(40px, 13.89vw, 80px);
+    display: flex;
+    padding: clamp(2.5px, 0.87vw, 15px);
+    justify-content: center;
+    cursor: pointer;
+}
+.mail-button:hover:enabled {
+    background-color: var(--accent-highlight) !important;
+}
+
+.iconclass {
+    width: clamp(40px, 13.89vw, 70px);
+    height: clamp(40px, 13.89vw, 70px);
+}
+
+/* --- Image Buttons --- */
+.image-button,
+.image-button2 {
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    background-color: var(--button);
+    font-family: raleway_bold, sans-serif;
+    font-size: 22px;
+    color: black;
+    margin-left: 3px;
+    margin-top: 3px;
+    height: 46px;
+    align-items: center;
+    display: flex;
+    padding: 3px;
+    justify-content: center;
+    cursor: pointer;
+    transition: filter 0.3s ease;
+}
+.image-button {
+    width: 165px;
+}
+.image-button2 {
+    width: 75px;
+}
+.image-button:hover:enabled,
+.image-button2:hover:enabled {
+    filter: brightness(1.5) !important;
+}
+
+.iconclass35 {
+    width: 35px;
+    height: 35px;
+}
+
+.image-text {
+    background-color: var(--button);
+    font-family: raleway_bold, sans-serif;
+    font-size: 22px;
+    width: 125px;
+    color: black;
+    text-align: right;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+/* --- Table Styles --- */
+.tableclass1 {
+    width: 350px;
+    background-color: #162042;
+    border: 0px solid #aaa;
+    padding: 5px;
+    box-shadow: inset 0px 2px 2px 2px rgba(120, 120, 120, 0.05);
+}
+
+.canvasclass {
+    width: 350px;
+    height: 250px;
+    display: block;
+}
+
+#maintable {
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+#maintable td.dark {
+    border: 0px solid red;
+    background: var(--background);
+}
+#maintable td.white {
+    border: 0px solid red;
+    background: var(--white);
+    position: relative;
+}
+
+.parent-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 20px 0;
+}
+
+/* ============================================================
+   21. CALCULATION DISPLAY
+   ============================================================ */
+.calc-table {
+    width: 100%;
+    padding: 0 clamp(5px, 2vw, 15px);
+}
+
+.calc-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: clamp(4px, 1.5vw, 10px);
+    font-family: raleway_regular, sans-serif;
+    font-size: clamp(14px, 4vw, 22px);
+    color: var(--text);
+}
+
+.calc-val {
+    font-family: roboto_regular, sans-serif;
+    text-align: right;
+}
+
+.calc-row strong {
+    font-family: roboto_bold, sans-serif;
+    font-size: clamp(16px, 4.5vw, 26px);
+    font-weight: 800;
+}
+
+.white-line-short {
+    width: clamp(100px, 40vw, 250px);
+    height: 1px;
+    background-color: var(--white);
+    margin: clamp(5px, 1.5vw, 10px) 0 clamp(5px, 1.5vw, 10px) auto;
+}
+
+.full-screen-line {
+    height: 1px;
+    background-color: var(--white);
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    margin-top: clamp(8px, 2vw, 15px);
+    margin-bottom: clamp(8px, 2vw, 15px);
+    opacity: 0.8;
+}
+
+.balance-link {
+    text-decoration: none;
+    display: inline-block;
+    transition: filter 0.3s ease;
+}
+.balance-link:hover {
+    filter: brightness(1.5);
+}
+
+/* ============================================================
+   22. TRANSACTION DETAILS
+   ============================================================ */
+.transaction-detail-link {
+    text-decoration: none;
+    display: block;
+    width: 100%;
+}
+.transaction-detail-link:hover {
+    filter: none !important;
+}
+
+.transaction-hover-row {
+    transition: background-color 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: clamp(5px, 1.74vw, 10px);
+    border-radius: clamp(4px, 1.39vw, 8px);
+    margin-left: clamp(-10px, -1.74vw, -5px);
+    margin-right: clamp(-10px, -1.74vw, -5px);
+}
+.transaction-hover-row:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    cursor: pointer;
+}
+
+.expanded-desc {
+    font-size: clamp(16px, 4.5vw, 26px);
+    font-family: raleway_bold, sans-serif;
+    transition: filter 0.3s ease-in-out !important;
+    color: var(--button);
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.transaction-hover-row .calc-val {
+    font-size: clamp(16px, 4.5vw, 26px);
+    font-family: raleway_bold, sans-serif;
+    transition: filter 0.3s ease-in-out !important;
+    background: transparent !important;
+    white-space: nowrap;
+}
+
+.transaction-hover-row:hover .expanded-desc {
+    filter: brightness(1.3) !important;
+}
+
+/* ============================================================
+   23. PROFILE FOOTER
+   ============================================================ */
+.profile-footer-row {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding-bottom: clamp(20px, 6.94vw, 40px);
+}
+
+.footer-item {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+.footer-item:first-child {
+    flex: 0 1 auto;
+    justify-content: flex-start;
+    margin-right: clamp(25px, 8.5vw, 50px);
+}
+.footer-item:last-child {
+    flex: 0 1 auto;
+    justify-content: flex-end;
+}
+
+.footer-date {
+    font-family: raleway_regular, sans-serif;
+    color: var(--text);
+    font-size: clamp(14px, 4.5vw, 22px);
+    white-space: nowrap;
+}
+
+.profile-footer-row .login-button {
+    margin: 0;
+    width: auto;
+    min-width: clamp(60px, 15vw, 100px);
+    white-space: nowrap;
+}
+
+.hd-footer-row {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding-bottom: 40px;
+}
+
+.hd-date-group {
+    display: flex;
+    align-items: center;
+    gap: clamp(10px, 3vw, 20px);
+    margin-right: auto;
+}
+.hd-date-display {
+    font-family: raleway_regular, sans-serif;
+    color: var(--text);
+    font-size: clamp(14px, 4.5vw, 22px);
+    white-space: nowrap;
+}
+
+.hd-download-group {
+    display: flex;
+    align-items: center;
+}
+
+.btn-gap-wide {
+    margin-right: clamp(30px, 9vw, 60px);
+}
+.csv-edge-margin {
+    margin-right: clamp(5px, 1.73vw, 10px);
+}
+
+/* ============================================================
+   24. HELP BUTTON
+   ============================================================ */
+.help-button-container {
+    position: relative;
+    margin-top: 15px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.help-button-container a {
+    pointer-events: auto;
+}
+
+/* ============================================================
+   25. HIGHLIGHT ANIMATIONS
+   ============================================================ */
+@keyframes flash-box-red {
+    0% {
+        background-color: #550000;
+    }
+    50% {
+        background-color: #550000;
+    }
+    100% {
+        background-color: var(--black);
+    }
+}
+
+@keyframes flash-button-red {
+    0% {
+        background-color: #550000;
+        border-color: #550000;
+    }
+    50% {
+        background-color: #550000;
+        border-color: #550000;
+    }
+    100% {
+        background-color: var(--button);
+        border-color: var(--button);
+    }
+}
+
+@keyframes flash-contour-red {
+    0% {
+        border-color: #550000;
+        box-shadow: 0 0 20px #550000;
+    }
+    50% {
+        border-color: #550000;
+        box-shadow: 0 0 20px #550000;
+    }
+    100% {
+        border-color: transparent;
+        box-shadow: 0 0 0 transparent;
+    }
+}
+
+@keyframes flash-text-red {
+    0% {
+        color: #880000;
+    }
+    50% {
+        color: #880000;
+    }
+    100% {
+        color: var(--text);
+    }
+}
+
+.highlight-change-btn {
+    animation: flash-button-red 3s ease-out forwards !important;
+}
+
+.dropdown-selector-animated {
+    background-color: transparent;
+    height: clamp(35px, 10.42vw, 60px);
+    line-height: clamp(35px, 10.42vw, 60px);
+    width: 100%;
+    font-family: raleway_regular, sans-serif;
+    font-size: clamp(16px, 5.21vw, 30px);
+    color: var(--white);
+    border: none;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: clamp(15px, 5vw, 25px);
+    vertical-align: middle;
+}
+
+.highlight-change {
+    animation: flash-box-red 3s ease-out forwards !important;
+    border-radius: clamp(15px, 5.21vw, 30px) !important;
+    overflow: hidden !important;
+}
+
+.highlight-image-contour {
+    border: 10px solid transparent;
+    animation: flash-contour-red 3s ease-out forwards !important;
+}
+
+.highlight-text {
+    animation: flash-text-red 3s ease-out forwards !important;
+}
+
+/* ============================================================
+   26. LOADING OVERLAY
+   ============================================================ */
+.loader-wrapper {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background-color: #162042 !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 999999 !important;
+}
+
+.loader {
+    width: 60px;
+    height: 60px;
+    border: 6px solid rgba(255, 255, 255, 0.1);
+    border-top: 6px solid #ffffff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.loader-text {
+    margin-top: 15px;
+    color: #ffffff;
+    font-family: 'raleway_regular', sans-serif;
+    letter-spacing: 1px;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loader-hidden {
+    display: none !important;
+}
+
+.content-ready {
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* ============================================================
+   27. YOUTUBE SHORTS
+   ============================================================ */
+.short-video-wrapper {
+    width: clamp(280px, 70vw, 400px);
+    aspect-ratio: 9 / 16;
+    margin: clamp(15px, 4vw, 25px) auto;
+    display: block;
+}
+.short-video-wrapper iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+}
+
+.download-section-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 20px auto;
+    gap: 10px;
+}
+
+/* ============================================================
+   28. RTL MODE OVERRIDES
+   ============================================================ */
+.rtl-mode {
+    text-align: right !important;
+}
+
+.rtl-mode .par,
+.rtl-mode .par_bold,
+.rtl-mode .par_italic,
+.rtl-mode .imgtext,
+.rtl-mode .form__label,
+.rtl-mode .title3,
+.rtl-mode .title1 {
+    text-align: right !important;
+    width: 100%;
+    display: block;
+}
+
+.rtl-mode ol,
+.rtl-mode ul {
+    padding-right: 40px;
+    padding-left: 0;
+    text-align: right;
+}
+
+.rtl-mode li {
+    text-align: right;
+}
+
+.rtl-mode .blockquote__text {
+    text-align: right !important;
+}
+
+/* Reduce spacing between title and thumbnail */
+.tight-spacing .Weltschmerz-image {
+    margin-top: clamp(2px, 0.5vw, 5px) !important;
+}
+
+.amount-container2 {
+    display: flex;
+    flex-direction: column;  /* Stack vertically */
+    align-items: center;      /* Center horizontally */
+    justify-content: center;
+    text-decoration: none;
+    height: 100%;
+    line-height: 1.1;
+    transition: filter 0.3s ease;
+}
+
+/* ============================================================
+   BASE.PHP SPECIFIC STYLES
+   ============================================================ */
+
+/* --- Title Table Layout --- */
+.title-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+}
+
+.title-table tr {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    margin-bottom: clamp(2px, 0.5vw, 5px);
+}
+
+.title-table td,
+.title-table th {
+    border: none;
+    padding: 0;
+    text-align: left;
+    background: transparent;
+}
+
+/* --- Number Box --- */
+.number-box {
+    width: clamp(25px, 4.34vw, 50px);
+    min-width: clamp(25px, 4.34vw, 50px);
+    font-family: 'roboto_bold', sans-serif;
+    font-size: clamp(18px, 4vw, 28px);
+    color: var(--text);
+    text-align: left;
+    padding-right: clamp(5px, 1.5vw, 10px);
+    border: none;
+    background: transparent;
+    font-weight: 800;
+}
+
+/* --- Title Boxes --- */
+.title-box,
+.single-title-box {
+    flex: 1;
+    padding: 0;
+    border: none;
+    background: transparent;
+}
+
+.title-box .title,
+.single-title-box .title {
+    font-family: 'raleway_bold', sans-serif;
+    font-size: clamp(16px, 4.5vw, 28px);
+    color: var(--text);
+    text-align: left;
+    margin: 0;
+    padding: 0;
+    line-height: 1.3;
+    white-space: normal;
+    display: block;
+    width: 100%;
+    text-transform: none;
+}
+
+/* --- Bold Quote (for list items) --- */
+.bold-quote {
+    font-family: 'roboto_bold', sans-serif;
+    font-weight: 800;
+    color: var(--text);
+    display: inline;
+}
+
+/* --- Quote text inside lists --- */
+.quote {
+    font-family: 'raleway_regular', sans-serif;
+    font-style: italic;
+    color: var(--white);
+    display: inline;
+    font-size: clamp(10px, 3.47vw, 20px);
+    line-height: 1.5;
+}
+
+/* --- List Items with Bold+Quote --- */
+.unordered-list .list-item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    font-family: 'raleway_regular', sans-serif;
+    color: var(--white);
+    font-size: clamp(10px, 3.47vw, 20px);
+    line-height: 1.6;
+    margin-bottom: 0.8em;
+    padding-left: clamp(5px, 1.5vw, 10px);
+}
+
+.unordered-list .list-item .bold-quote {
+    font-family: 'roboto_bold', sans-serif;
+    font-weight: 800;
+    color: var(--text);
+}
+
+.unordered-list .list-item .quote {
+    font-family: 'raleway_regular', sans-serif;
+    font-style: italic;
+    color: var(--white);
+}
+
+/* --- PDF Button Wrapper --- */
+.pdf-wrap {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-bottom: clamp(5px, 1.74vw, 10px);
+}
+
+.button-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.pdf-button {
+    width: auto !important;
+    padding: clamp(5px, 1.74vw, 10px) clamp(15px, 5.21vw, 30px) !important;
+    font-size: clamp(14px, 4vw, 22px) !important;
+}
+
+/* --- Back to Top Button --- */
+#totop {
+    margin: clamp(10px, 3.47vw, 20px) auto;
+    display: block;
+    width: auto !important;
+    padding: clamp(5px, 1.74vw, 10px) clamp(20px, 6.94vw, 40px) !important;
+}
+
+/* --- RTL Overrides for base.php --- */
+.rtl-mode .title-table tr {
+    flex-direction: row-reverse;
+}
+
+.rtl-mode .number-box {
+    text-align: right;
+    padding-right: 0;
+    padding-left: clamp(5px, 1.5vw, 10px);
+}
+
+.rtl-mode .title-box .title,
+.rtl-mode .single-title-box .title {
+    text-align: right;
+}
+
+.rtl-mode .unordered-list .list-item {
+    padding-left: 0;
+    padding-right: clamp(5px, 1.5vw, 10px);
+}
+
+.rtl-mode .pdf-wrap,
+.rtl-mode .button-wrapper {
+    justify-content: flex-start;
+}
+
+.rtl-mode .bold-quote {
+    /* Keep the bold styling, just adjust if needed */
+}
+
+/* --- Responsive adjustments for base.php --- */
+@media (max-width: 576px) {
+    .title-box .title,
+    .single-title-box .title {
+        font-size: clamp(14px, 3.5vw, 20px);
+    }
+    
+    .number-box {
+        font-size: clamp(16px, 3.5vw, 22px);
+        width: clamp(20px, 3.5vw, 30px);
+        min-width: clamp(20px, 3.5vw, 30px);
+    }
+    
+    .unordered-list .list-item {
+        font-size: clamp(9px, 3vw, 16px);
+    }
+    
+    .bold-quote,
+    .quote {
+        font-size: clamp(9px, 3vw, 16px);
+    }
+}
+
+/* --- Article Text --- */
+.par {
+    font-family: 'raleway_regular', sans-serif;
+    color: var(--white);
+    font-size: clamp(10px, 3.47vw, 20px);
+    margin-top: 0;
+    margin-bottom: 1.2em;
+    padding-inline-end: clamp(25px, 8.68vw, 50px);
+    padding-inline-start: 0;
+    text-align: left;
+    display: block;
+    line-height: 1.5;
+}
+
+.title1 {
+    font-family: 'raleway_bold', sans-serif;
+    font-size: clamp(22px, 6.94vw, 40px);
+    font-weight: bold;
+    line-height: 1.4;
+    text-transform: uppercase;
+    color: var(--text);
+    display: block;
+    text-align: center;
+    width: 100%;
+    margin-bottom: clamp(5px, 1.74vw, 10px);
+}
+
+/* ============================================================
+   EDUCATION.PHP SPECIFIC STYLES
+   ============================================================ */
+
+/* --- Education Page Titles (Books, YouTube Videos, Articles) --- */
+#capture-section .title3 {
+    font-family: 'raleway_bold', sans-serif;
+    font-size: clamp(20px, 5.5vw, 32px);
+    font-weight: bold;
+    color: var(--text) !important;  /* Gold color */
+    display: block;
+    text-align: left;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+    padding-inline-end: clamp(25px, 8.68vw, 50px);
+    padding-inline-start: 0;
+    text-transform: capitalize;
+}
+
+/* --- Education Page Ordered Lists --- */
+#capture-section ol {
+    list-style-type: decimal;
+    padding-left: clamp(30px, 8vw, 50px);
+    margin: 0;
+    padding-right: clamp(25px, 8.68vw, 50px);
+}
+
+/* --- Education Page List Items --- */
+#capture-section ol li {
+    margin-bottom: clamp(3px, 0.8vw, 8px);
+    font-family: 'raleway_regular', sans-serif;
+    font-size: clamp(14px, 4vw, 22px);
+    color: var(--white);
+    text-align: left;
+}
+
+/* --- Education Page Links (Green Button Style) --- */
+#capture-section ol li .link {
+    font-family: 'raleway_bold', sans-serif;
+    font-size: clamp(14px, 4vw, 22px);
+    color: var(--button) !important;  /* Green color */
+    text-decoration: none;
+    display: inline-block;
+    transition: filter 0.3s ease, transform 0.1s ease;
+    cursor: pointer;
+    padding: clamp(2px, 0.5vw, 5px) 0;
+}
+
+#capture-section ol li .link:hover {
+    filter: brightness(1.5) !important;
+    cursor: pointer;
+}
+
+/* --- Education Page Paragraphs --- */
+#capture-section .par {
+    font-family: 'raleway_regular', sans-serif;
+    color: var(--white);
+    font-size: clamp(14px, 4vw, 22px);
+    margin-top: 0;
+    margin-bottom: 1.2em;
+    padding-inline-end: clamp(25px, 8.68vw, 50px);
+    padding-inline-start: 0;
+    text-align: left;
+    display: block;
+    line-height: 1.6;
+}
+
+/* --- Main Title (Education) --- */
+#capture-section .title1 {
+    font-family: 'raleway_bold', sans-serif;
+    font-size: clamp(28px, 8vw, 48px);
+    font-weight: bold;
+    line-height: 1.3;
+    text-transform: uppercase;
+    color: var(--text) !important;  /* Gold color */
+    display: block;
+    text-align: center;
+    width: 100%;
+    margin-bottom: clamp(10px, 3vw, 20px);
+    letter-spacing: 2px;
+}
+
+/* --- Back to Top Button --- */
+#totop {
+    margin: clamp(15px, 4vw, 30px) auto;
+    display: block;
+    width: auto !important;
+    padding: clamp(8px, 2vw, 15px) clamp(25px, 8vw, 50px) !important;
+    font-family: 'raleway_bold', sans-serif;
+    font-size: clamp(14px, 4vw, 22px);
+    color: var(--button);
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: filter 0.3s ease;
+}
+
+#totop:hover {
+    filter: brightness(1.5);
+}
+
+/* --- RTL Overrides for Education Page --- */
+.rtl-mode #capture-section .title3 {
+    text-align: right;
+    padding-inline-end: 0;
+    padding-inline-start: clamp(25px, 8.68vw, 50px);
+}
+
+.rtl-mode #capture-section ol {
+    padding-left: clamp(25px, 8.68vw, 50px);
+    padding-right: clamp(30px, 8vw, 50px);
+    text-align: right;
+}
+
+.rtl-mode #capture-section ol li {
+    text-align: right;
+}
+
+.rtl-mode #capture-section .par {
+    text-align: right;
+    padding-inline-end: 0;
+    padding-inline-start: clamp(25px, 8.68vw, 50px);
+}
+
+.rtl-mode #totop {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 576px) {
+    #capture-section .title1 {
+        font-size: clamp(22px, 6vw, 32px);
+    }
+    
+    #capture-section .title3 {
+        font-size: clamp(17px, 4.5vw, 24px);
+    }
+    
+    #capture-section .par,
+    #capture-section ol li,
+    #capture-section ol li .link {
+        font-size: clamp(12px, 3.5vw, 18px);
+    }
+    
+    #capture-section ol {
+        padding-left: clamp(20px, 5vw, 30px);
+        padding-right: clamp(15px, 4vw, 25px);
+    }
+}
+
+
+/* ============================================================
+   ARTICLE PAGES SPECIFIC STYLES (articleXX-reader.php)
+   ============================================================ */
+
+/* --- Article Main Container --- */
+#capture-section {
+    background-color: var(--background);
+    padding: clamp(15px, 5.21vw, 30px);
+    margin: 0 auto;
+    width: clamp(288px, 100vw, 576px);
+    text-align: left;
+    line-height: 1.6;
+    color: var(--white);
+    box-shadow: none;
+    display: none; /* Hidden by default, shown by JS */
+}
+
+/* --- Article Main Title --- */
+#capture-section .title1 {
+    font-family: 'raleway_bold', sans-serif;
+    font-size: clamp(24px, 7vw, 42px);
+    font-weight: bold;
+    line-height: 1.3;
+    text-transform: uppercase;
+    color: var(--text) !important; /* Gold */
+    display: block;
+    text-align: center;
+    width: 100%;
+    margin-bottom: clamp(5px, 1.5vw, 10px);
+    letter-spacing: 1px;
+}
+
+/* --- Article Subtitle (title4) --- */
+#capture-section .title4 {
+    font-family: 'raleway_regular', sans-serif;
+    font-size: clamp(14px, 4vw, 22px);
+    font-style: italic;
+    color: var(--disabled) !important; /* Gray */
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-bottom: clamp(15px, 4vw, 25px);
+    padding-inline-end: clamp(25px, 8.68vw, 50px);
+    padding-inline-start: clamp(25px, 8.68vw, 50px);
+}
+
+/* --- Article Section Titles (title3) --- */
+#capture-section .title3 {
+    font-family: 'raleway_bold', sans-serif;
+    font-size: clamp(18px, 5vw, 28px);
+    font-weight: bold;
+    color: var(--text) !important; /* Gold */
+    display: block;
+    text-align: left;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+    padding-inline-end: clamp(25px, 8.68vw, 50px);
+    padding-inline-start: 0;
+    text-transform: capitalize;
+    line-height: 1.3;
+}
+
+/* --- Article Paragraphs --- */
+#capture-section .par {
+    font-family: 'raleway_regular', sans-serif;
+    color: var(--white);
+    font-size: clamp(14px, 4vw, 22px);
+    margin-top: 0;
+    margin-bottom: 1.2em;
+    padding-inline-end: clamp(25px, 8.68vw, 50px);
+    padding-inline-start: 0;
+    text-align: left;
+    display: block;
+    line-height: 1.7;
+}
+
+/* --- Article Bold Paragraphs --- */
+#capture-section .par_bold {
+    font-family: 'raleway_bold', sans-serif;
+    color: var(--text) !important; /* Gold for bold emphasis */
+    font-size: clamp(15px, 4.2vw, 24px);
+    margin-top: 0;
+    margin-bottom: 0.3em;
+    padding-inline-end: clamp(25px, 8.68vw, 50px);
+    padding-inline-start: 0;
+    text-align: left;
+    display: block;
+    line-height: 1.5;
+}
+
+/* --- Article Italic Paragraphs --- */
+#capture-section .par_italic {
+    font-family: 'raleway_regular', sans-serif;
+    color: var(--text) !important; /* Gold for italic emphasis */
+    font-size: clamp(14px, 4vw, 22px);
+    font-weight: bold;
+    font-style: italic;
+    margin-inline-start: clamp(20px, 6.94vw, 40px);
+    display: block;
+    margin-top: 0.2em;
+    margin-bottom: 1.2em;
+    padding-inline-end: clamp(25px, 8.68vw, 50px);
+    line-height: 1.6;
+}
+
+/* --- Article Ordered Lists --- */
+#capture-section ol {
+    list-style-type: decimal;
+    padding-left: clamp(30px, 8vw, 50px);
+    margin: 0;
+    padding-right: clamp(25px, 8.68vw, 50px);
+    margin-bottom: 1.2em;
+}
+
+#capture-section ol li {
+    margin-bottom: clamp(3px, 0.8vw, 8px);
+    font-family: 'raleway_regular', sans-serif;
+    font-size: clamp(14px, 4vw, 22px);
+    color: var(--white);
+    text-align: left;
+}
+
+#capture-section ol li .par {
+    padding-inline-end: 0;
+    margin-bottom: 0.5em;
+}
+
+/* --- Article Blockquotes --- */
+#capture-section .blockquote {
+    max-width: 100%;
+    margin: clamp(15px, 4vw, 25px) auto;
+    padding: clamp(15px, 4vw, 25px);
+    background: var(--headerback);
+    border-left: clamp(5px, 1.73vw, 10px) solid var(--text) !important; /* Gold border */
+    color: var(--white);
+    box-sizing: border-box;
+    border-radius: 0 8px 8px 0;
+}
+
+#capture-section .blockquote--bordered {
+    border-left: clamp(5px, 1.73vw, 10px) solid var(--text) !important;
+}
+
+#capture-section .blockquote__text {
+    font-family: 'raleway_regular', sans-serif;
+    font-style: italic;
+    font-size: clamp(14px, 4vw, 22px);
+    line-height: 1.7;
+    color: var(--white);
+    margin: 0 0 0.8em 0;
+}
+
+#capture-section .blockquote__text:last-child {
+    margin-bottom: 0;
+}
+
+/* --- Article Images --- */
+#capture-section img {
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    margin: clamp(15px, 4vw, 25px) auto;
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* --- Article Author Table --- */
+.article-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: clamp(15px, 4vw, 25px);
+    gap: 15px;
+    padding-inline-end: clamp(25px, 8.68vw, 50px);
+    padding-inline-start: 0;
+}
+
+.author-wrap {
+    flex: 1;
+}
+
+.author-table {
+    width: auto;
+    border-collapse: collapse;
+}
+
+.author-table td {
+    padding-left: clamp(10px, 2.6vw, 15px);
+    text-align: left;
+    white-space: nowrap;
+    color: var(--text) !important;
+    font-family: 'raleway_bold', sans-serif;
+    font-size: clamp(12px, 3.5vw, 18px);
+}
+
+.author-table .imgtext {
+    font-family: 'raleway_bold', sans-serif;
+    font-size: clamp(12px, 3.5vw, 18px);
+    text-transform: uppercase;
+    color: var(--text) !important;
+}
+
+.author-photo {
+    width: clamp(50px, 12vw, 80px);
+    height: clamp(50px, 12vw, 80px);
+    border-radius: 50%;
+    display: block;
+    object-fit: cover;
+    border: 2px solid var(--text);
+}
+
+/* --- PDF Button --- */
+.pdf-wrap {
+    display: flex;
+    justify-content: flex-end;
+    flex-shrink: 0;
+}
+
+.pdf-button {
+    width: auto !important;
+    padding: clamp(8px, 2vw, 15px) clamp(20px, 6vw, 40px) !important;
+    font-family: 'raleway_bold', sans-serif;
+    font-size: clamp(14px, 4vw, 22px);
+    color: var(--button) !important;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: filter 0.3s ease;
+}
+
+.pdf-button:hover {
+    filter: brightness(1.5) !important;
+}
+
+/* --- Back to Top Button --- */
+#totop {
+    margin: clamp(15px, 4vw, 30px) auto;
+    display: block;
+    width: auto !important;
+    padding: clamp(8px, 2vw, 15px) clamp(25px, 8vw, 50px) !important;
+    font-family: 'raleway_bold', sans-serif;
+    font-size: clamp(14px, 4vw, 22px);
+    color: var(--button) !important;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: filter 0.3s ease;
+}
+
+#totop:hover {
+    filter: brightness(1.5) !important;
+}
+
+/* --- Article Links (if any) --- */
+#capture-section .link {
+    font-family: 'raleway_bold', sans-serif;
+    font-size: clamp(14px, 4vw, 22px);
+    color: var(--button) !important;
+    text-decoration: none;
+    transition: filter 0.3s ease;
+    cursor: pointer;
+}
+
+#capture-section .link:hover {
+    filter: brightness(1.5) !important;
+}
+
+/* --- RTL Overrides for Articles --- */
+.rtl-mode #capture-section .title3 {
+    text-align: right;
+    padding-inline-end: 0;
+    padding-inline-start: clamp(25px, 8.68vw, 50px);
+}
+
+.rtl-mode #capture-section .par,
+.rtl-mode #capture-section .par_bold,
+.rtl-mode #capture-section .par_italic {
+    text-align: right;
+    padding-inline-end: 0;
+    padding-inline-start: clamp(25px, 8.68vw, 50px);
+}
+
+.rtl-mode #capture-section .par_italic {
+    margin-inline-start: 0;
+    margin-inline-end: clamp(20px, 6.94vw, 40px);
+}
+
+.rtl-mode #capture-section ol {
+    padding-left: clamp(25px, 8.68vw, 50px);
+    padding-right: clamp(30px, 8vw, 50px);
+    text-align: right;
+}
+
+.rtl-mode #capture-section ol li {
+    text-align: right;
+}
+
+.rtl-mode #capture-section .blockquote {
+    border-left: none !important;
+    border-right: clamp(5px, 1.73vw, 10px) solid var(--text) !important;
+    border-radius: 8px 0 0 8px;
+}
+
+.rtl-mode .article-header-row {
+    flex-direction: row-reverse;
+    padding-inline-end: 0;
+    padding-inline-start: clamp(25px, 8.68vw, 50px);
+}
+
+.rtl-mode .author-table td {
+    padding-left: 0;
+    padding-right: clamp(10px, 2.6vw, 15px);
+    text-align: right;
+}
+
+.rtl-mode .pdf-wrap {
+    justify-content: flex-start;
+}
+
+/* --- Responsive Adjustments for Articles --- */
+@media (max-width: 576px) {
+    #capture-section .title1 {
+        font-size: clamp(20px, 5.5vw, 28px);
+    }
+    
+    #capture-section .title3 {
+        font-size: clamp(16px, 4.2vw, 22px);
+    }
+    
+    #capture-section .par,
+    #capture-section .par_italic,
+    #capture-section .blockquote__text {
+        font-size: clamp(12px, 3.5vw, 18px);
+    }
+    
+    #capture-section .par_bold {
+        font-size: clamp(13px, 3.8vw, 20px);
+    }
+    
+    #capture-section ol {
+        padding-left: clamp(20px, 5vw, 30px);
+        padding-right: clamp(15px, 4vw, 25px);
+    }
+    
+    #capture-section ol li {
+        font-size: clamp(12px, 3.5vw, 18px);
+    }
+    
+    .article-header-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        padding-inline-end: clamp(15px, 4vw, 25px);
+    }
+    
+    .author-table td {
+        font-size: clamp(10px, 3vw, 14px);
+    }
+    
+    .author-photo {
+        width: clamp(40px, 10vw, 60px);
+        height: clamp(40px, 10vw, 60px);
+    }
+    
+    .pdf-wrap {
+        width: 100%;
+        justify-content: flex-start;
+    }
+    
+    .rtl-mode .article-header-row {
+        flex-direction: column;
+        align-items: flex-end;
+    }
+    
+    .rtl-mode .pdf-wrap {
+        justify-content: flex-end;
+    }
+}
+
+/* ============================================================
+   BASE.PHP IMAGE CENTERING FIX
+   ============================================================ */
+
+/* Fix for base.php images - center within content area */
+#capture-section .norm-image,
+#capture-section .wide-image {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+    margin: clamp(15px, 4vw, 25px) auto !important;
+    display: block !important;
+    object-fit: contain !important;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* RTL fix for base.php images */
+.rtl-mode #capture-section .norm-image,
+.rtl-mode #capture-section .wide-image {
+    left: auto !important;
+    right: auto !important;
+    margin: clamp(15px, 4vw, 25px) auto !important;
+}
+
+/* ============================================================
+   AUTHOR TABLE FIX - Simple float approach
+   ============================================================ */
+
+.author-table {
+    width: auto !important;
+    border-collapse: collapse !important;
+}
+
+.author-table tbody,
+.author-table tr {
+    display: block !important;
+}
+
+.author-table th {
+    float: left !important;
+    padding: 0 !important;
+    border: none !important;
+    width: clamp(50px, 12vw, 80px) !important;
+    height: clamp(50px, 12vw, 80px) !important;
+    margin-right: clamp(10px, 2.6vw, 15px) !important;
+}
+
+.author-table td {
+    display: block !important;
+    padding: 0 !important;
+    border: none !important;
+    line-height: 1.3 !important;
+    clear: none !important;
+}
+
+.author-photo {
+    width: clamp(50px, 12vw, 80px) !important;
+    height: clamp(50px, 12vw, 80px) !important;
+    border-radius: 50% !important;
+    display: block !important;
+    object-fit: cover !important;
+    border: 2px solid var(--text) !important;
+    background-color: var(--background) !important;
+}
+
+.author-table .imgtext {
+    font-family: 'raleway_bold', sans-serif !important;
+    font-size: clamp(12px, 3.5vw, 18px) !important;
+    text-transform: uppercase !important;
+    color: var(--text) !important;
+    white-space: nowrap !important;
+    display: block !important;
+    padding: 0 !important;
+    line-height: 1.3 !important;
+}
+
+/* RTL fix */
+.rtl-mode .author-table th {
+    float: right !important;
+    margin-right: 0 !important;
+    margin-left: clamp(10px, 2.6vw, 15px) !important;
+}
+
+.rtl-mode .author-table td {
+    text-align: right !important;
+}
+
+.author-photo {
+    width: clamp(50px, 12vw, 80px) !important;
+    height: clamp(50px, 12vw, 80px) !important;
+    border-radius: 50% !important;
+    display: block !important;
+    object-fit: cover !important;
+    border: 2px solid var(--text) !important;
+    flex-shrink: 0 !important;
+    transform: translateY(clamp(-40px, -7.2vw, -80px)) !important; /* Add this line */
+}
